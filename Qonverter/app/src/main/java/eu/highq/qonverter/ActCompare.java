@@ -48,8 +48,8 @@ public class ActCompare extends AppCompatActivity {
             return true;
         }
         if (id == R.id.action_add){
-            //Toast toast = Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT);
-            //toast.show();
+             //Toast toast = Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT);
+             //toast.show();
             return true;
         }
 
