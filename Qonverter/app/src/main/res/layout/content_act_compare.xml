@@ -17,13 +17,13 @@
             android:layout_weight="1"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
-            android:background="@android:color/black"/>
+            android:background="@color/colorMainUpper"/>
 
         <LinearLayout
             android:layout_weight="1"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
-            android:background="@android:color/darker_gray"/>
+            android:background="@color/colorMainLower"/>
 
     </LinearLayout>
 
