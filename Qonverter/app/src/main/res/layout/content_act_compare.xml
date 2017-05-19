@@ -17,11 +17,11 @@
         <LinearLayout
             android:id="@+id/upperLayout"
             android:orientation="horizontal"
-            android:layout_weight="1"
+            android:layout_weight=".5"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
             android:padding="5dp"
-            android:background="@color/colorMainUpper" >
+            android:background="@color/colorMainUpper">
 
             <Spinner
                 android:id="@+id/spinnerUpperSelectItem"
@@ -30,12 +30,19 @@
 
             </Spinner>
 
+            <ImageView
+                android:id="@+id/imgViewUpperIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+
+            </ImageView>
+
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/lowerLayout"
             android:orientation="horizontal"
-            android:layout_weight="1"
+            android:layout_weight=".5"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
             android:padding="5dp"
