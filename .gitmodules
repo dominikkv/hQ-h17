@@ -1,0 +1,3 @@
+[submodule "hackathon-data-sources"]
+	path = hackathon-data-sources
+	url = https://github.com/johannesmols/hackathon-data-sources
