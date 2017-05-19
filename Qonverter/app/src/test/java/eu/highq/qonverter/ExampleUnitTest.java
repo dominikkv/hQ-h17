@@ -1,4 +1,4 @@
-package eu.highq.qualqulator;
+package eu.highq.qonverter;
 
 import org.junit.Test;
 

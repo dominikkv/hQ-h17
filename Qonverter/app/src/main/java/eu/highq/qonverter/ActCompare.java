@@ -1,4 +1,4 @@
-package eu.highq.qualqulator;
+package eu.highq.qonverter;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
