@@ -9,21 +9,46 @@
     tools:showIn="@layout/activity_act_compare">
 
     <LinearLayout
+        android:id="@+id/rootLayout"
         android:orientation="vertical"
         android:layout_height="fill_parent"
-        android:layout_width="fill_parent" >
+        android:layout_width="fill_parent">
 
         <LinearLayout
+            android:id="@+id/upperLayout"
+            android:orientation="horizontal"
             android:layout_weight="1"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
-            android:background="@color/colorMainUpper"/>
+            android:padding="5dp"
+            android:background="@color/colorMainUpper" >
+
+            <Spinner
+                android:id="@+id/spinnerUpperSelectItem"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+            </Spinner>
+
+        </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/lowerLayout"
+            android:orientation="horizontal"
             android:layout_weight="1"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
-            android:background="@color/colorMainLower"/>
+            android:padding="5dp"
+            android:background="@color/colorMainLower" >
+
+            <Spinner
+                android:id="@+id/spinnerLowerSelectItem"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+            </Spinner>
+
+        </LinearLayout>
 
     </LinearLayout>
 
