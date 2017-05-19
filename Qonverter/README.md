@@ -1,5 +1,5 @@
 # hQ-h17
 Freiburg Hackathon 2017
 
-# QualQulator
+# Qonverter
 Android Studio project, main app
