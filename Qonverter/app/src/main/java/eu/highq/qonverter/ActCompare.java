@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class ActCompare extends AppCompatActivity {
 
@@ -44,6 +45,11 @@ public class ActCompare extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+        if (id == R.id.action_add){
+             //Toast toast = Toast.makeText(getApplicationContext(), "test", Toast.LENGTH_SHORT);
+             //toast.show();
             return true;
         }
 
