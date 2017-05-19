@@ -5,23 +5,19 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
-@Table(name = "Items")
+@Table(name = "tbl_EnergyCarriers")
 public class EnergyCarrier extends Model {
 
-
     @Column(name = "Name")
-    private String fName;
+    public String name;
 
-    EnergyCarrier(String name) {
-        fName = name;
-    }
+    @Column(name = "Category")
+    public Category category;
 
-    public String getfName() {
-        return fName;
-    }
+    @Column(name = "Unit")
+    public Unit unit;
 
-    public void setfName(String fName) {
-        this.fName = fName;
-    }
+    @Column(name = "Energy")
+    public long energy;
 
 }
