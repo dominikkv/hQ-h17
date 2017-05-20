@@ -116,11 +116,6 @@ public class ActCompare extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            //setContentView(R.layout.popup_settings);
-            return true;
-        }
         if (id == R.id.action_add) {
             //setContentView(R.layout.popup_addcategory);
             return true;
