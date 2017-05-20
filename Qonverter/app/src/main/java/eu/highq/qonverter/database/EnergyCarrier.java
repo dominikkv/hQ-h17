@@ -84,6 +84,14 @@ public class EnergyCarrier extends Model {
         carrier.description = "Wie lange muss das Kraftwerk bei Maximalleistung laufen?";
         carrier.save();
 
+        carrier = new EnergyCarrier();
+        carrier.name = "Photovoltaik";
+        carrier.category = categoryKraftwerk;
+        carrier.energy = 15891395683l;
+        carrier.unit = unitZeit;
+        carrier.description = "Mussten alle Photovoltaik-Anlagen in Deutschland 2016 dafür arbeiten";
+        carrier.save();
+
 //------BEWEGUNG
         carrier = new EnergyCarrier();
         carrier.name = "Radfahren";
@@ -610,5 +618,20 @@ public class EnergyCarrier extends Model {
         carrier.description = "Energiebedarf";
         carrier.save();
 
+        carrier = new EnergyCarrier();
+        carrier.name = "Handy Durchschnitt";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 5;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Standby Durchschnitt";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 20;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
     }
 }
