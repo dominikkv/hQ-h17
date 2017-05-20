@@ -9,7 +9,7 @@ import eu.highq.qonverter.database.Variant;
 public class CompareItem {
     public EnergyCarrier carrier;
     public List<Variant> variants;
-    public Double factor;
+    public double factor;
 
     public CompareItem(EnergyCarrier carrier) {
         this.variants = new ArrayList<>();

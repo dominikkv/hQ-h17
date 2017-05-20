@@ -6,11 +6,14 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -88,6 +91,10 @@ public class ActCompare extends AppCompatActivity {
         setItem(secondItem, 1);
     }
 
+    private CompareItem getOther(int index) {
+        return this.items.get(index == 0 ? 1 : 0);
+    }
+
     private CompareItem generateRandomItem() {
         EnergyCarrier carrier = new Select().from(EnergyCarrier.class).orderBy("RANDOM()").executeSingle();
         return new CompareItem(carrier);
@@ -143,7 +150,7 @@ public class ActCompare extends AppCompatActivity {
     }
 
     private void updateItem(CompareItem item, int index) {
-        CompareItem compareWith = this.items.get(index == 0 ? 1 : 0);
+        CompareItem compareWith = getOther(index);
 
         if (compareWith != null) {
             item.adjustFactor(compareWith.calculateEnergy());
@@ -182,10 +189,36 @@ public class ActCompare extends AppCompatActivity {
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinnerVariante.setAdapter(adapter);*/
 
+                upperItemCategory.setText(item.carrier.category.name);
+
+                TextView label = (TextView) findViewById(R.id.txtLabelUpper);
+                label.setText(item.carrier.unit.name);
+
+                UnitAbbreviation abbr = item.carrier.unit.abbreviations().get(0);
+
+                TextView unit = (TextView) findViewById(R.id.txtUnitUpper);
+                unit.setText(abbr.abbreviation);
+
+                EditText value = (EditText) findViewById(R.id.edtValueUpper);
+                value.setText(Double.valueOf(item.factor * abbr.factor).toString());
+
                 break;
             case 1:
                 // hier Oberfläche 2 updaten
                 lowerItem.setText(item.carrier.name);
+                lowerItemCategory.setText(item.carrier.category.name);
+
+                label = (TextView) findViewById(R.id.txtLabelLower);
+                label.setText(item.carrier.unit.name);
+
+                abbr = item.carrier.unit.abbreviations().get(0);
+
+                unit = (TextView) findViewById(R.id.txtUnitLower);
+                unit.setText(abbr.abbreviation);
+
+                value = (EditText) findViewById(R.id.edtValueLower);
+                value.setText(Double.valueOf(item.factor * abbr.factor).toString());
+
                 break;
             default:
                 throw new IllegalArgumentException("Index out of bounds");
