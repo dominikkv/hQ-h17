@@ -69,6 +69,50 @@ public class ActCompare extends AppCompatActivity {
         upperItem.setOnClickListener(itemUpperOnClick);
         lowerItem.setOnClickListener(itemLowerOnClick);
 
+        EditText value = (EditText) findViewById(R.id.edtValueUpper);
+        value.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                CompareItem item = items.get(0);
+                double value = Double.parseDouble(editable.toString());
+                if (value != item.factor) {
+                    item.factor = value;
+                    CompareItem other = getOther(0);
+                    if (other != null) {
+                        updateItem(getOther(0), 1);
+                    }
+                }
+            }
+        });
+
+        value = (EditText) findViewById(R.id.edtValueLower);
+        value.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                CompareItem item = items.get(1);
+                double value = Double.parseDouble(editable.toString());
+                if (value != item.factor) {
+                    item.factor = value;
+                    CompareItem other = getOther(1);
+                    if (other != null) {
+                        updateItem(getOther(1), 0);
+                    }
+                }
+            }
+        });
+
         this.items.add(null);
         this.items.add(null);
 
