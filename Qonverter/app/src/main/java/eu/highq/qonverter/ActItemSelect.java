@@ -44,7 +44,7 @@ public class ActItemSelect extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         final Intent intent = getIntent();
-        final String value = intent.getStringExtra("item");
+        final String value = intent.getStringExtra("upperOrLower");
 
         //List stuff
 
