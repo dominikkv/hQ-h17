@@ -15,9 +15,9 @@
         android:layout_width="fill_parent">
 
         <LinearLayout
-            android:id="@+id/upperLayout"
+            android:id="@+id/layoutInputUpper"
             android:orientation="horizontal"
-            android:layout_weight=".5"
+            android:layout_weight="1"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
             android:padding="5dp"
@@ -30,19 +30,12 @@
 
             </Spinner>
 
-            <ImageView
-                android:id="@+id/imgViewUpperIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-
-            </ImageView>
-
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/lowerLayout"
+            android:id="@+id/resultLayout"
             android:orientation="horizontal"
-            android:layout_weight=".5"
+            android:layout_weight="1"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
             android:padding="5dp"
@@ -54,6 +47,17 @@
                 android:layout_height="wrap_content" >
 
             </Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutInputLower"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:padding="5dp"
+            android:background="@color/colorMainResult">
 
         </LinearLayout>
 
