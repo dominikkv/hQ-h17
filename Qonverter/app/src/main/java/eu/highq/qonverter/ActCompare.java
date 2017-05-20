@@ -68,7 +68,6 @@ public class ActCompare extends AppCompatActivity {
         lowerItem.setOnClickListener(itemLowerOnClick);
 
         EditText value = (EditText) findViewById(R.id.edtValueUpper);
-        final EditText finalValue = value;
         value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFokus) {
@@ -160,7 +159,6 @@ public class ActCompare extends AppCompatActivity {
         public void onClick(View view) {
             Intent ItemSelectionIntent = new Intent(view.getContext(), ActItemSelect.class);
             ItemSelectionIntent.putExtra("upperOrLower", "0");
-            //ItemSelectionIntent.setAction(ItemSelectionIntent.ACTION_ANSWER);
             ActCompare.this.startActivityForResult(ItemSelectionIntent, REQUEST_CODE);
         }
     };
@@ -176,8 +174,6 @@ public class ActCompare extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE) {
-            //displayItem(data.getExtras().getString("item"), data.getExtras().getShort("upperOrLower"));
-            //Toast.makeText(this, data.getExtras().getString("item"), Toast.LENGTH_LONG).show();
             EnergyCarrier result = new Select().from(EnergyCarrier.class).where("Name = ?", data.getExtras().getString("item")).executeSingle();
             CompareItem item = new CompareItem(result);
             setItem(item, Integer.parseInt(data.getExtras().getString("upperOrLower")));
