@@ -1,6 +1,5 @@
 package eu.highq.qonverter;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -13,13 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import com.activeandroid.query.Select;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import eu.highq.qonverter.database.EnergyCarrier;
@@ -44,7 +38,7 @@ public class ActItemSelect extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         final Intent intent = getIntent();
-        final String value = intent.getStringExtra("item");
+        final String value = intent.getStringExtra("upperOrLower");
 
         //List stuff
 

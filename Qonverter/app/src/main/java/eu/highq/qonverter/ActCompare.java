@@ -6,24 +6,20 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.content.Intent;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.activeandroid.query.Select;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-
 import eu.highq.qonverter.database.Category;
 import eu.highq.qonverter.database.EnergyCarrier;
 import eu.highq.qonverter.database.Unit;
@@ -38,7 +34,7 @@ public class ActCompare extends AppCompatActivity {
     public TextView upperItem, lowerItem;
     public TextView upperItemCategory, lowerItemCategory;
 
-    public Spinner spinnerVariante;
+    public static final int REQUEST_CODE = 1;
 
     public String lastVal1;
     public String lastVal2;
@@ -67,7 +63,6 @@ public class ActCompare extends AppCompatActivity {
         lowerItem = (TextView) findViewById(R.id.txtItemLower);
         upperItemCategory = (TextView) findViewById(R.id.txtItemUpperCategory);
         lowerItemCategory = (TextView) findViewById(R.id.txtItemLowerCategory);
-        spinnerVariante = (Spinner) findViewById(R.id.spinnerVariante);
 
         //OnClickListener for Items
         upperItem.setOnClickListener(itemUpperOnClick);
@@ -165,33 +160,33 @@ public class ActCompare extends AppCompatActivity {
     View.OnClickListener itemUpperOnClick = new View.OnClickListener() {
         public void onClick(View view) {
             Intent ItemSelectionIntent = new Intent(view.getContext(), ActItemSelect.class);
-            ItemSelectionIntent.putExtra("item", "1");
+            ItemSelectionIntent.putExtra("upperOrLower", "0");
             //ItemSelectionIntent.setAction(ItemSelectionIntent.ACTION_ANSWER);
-            ActCompare.this.startActivityForResult(ItemSelectionIntent, RESULT_OK);
+            ActCompare.this.startActivityForResult(ItemSelectionIntent, REQUEST_CODE);
         }
     };
 
     View.OnClickListener itemLowerOnClick = new View.OnClickListener() {
         public void onClick(View view) {
             Intent ItemSelectionIntent = new Intent(view.getContext(), ActItemSelect.class);
-            ItemSelectionIntent.putExtra("item", "2");
-            ActCompare.this.startActivityForResult(ItemSelectionIntent, RESULT_OK);
+            ItemSelectionIntent.putExtra("upperOrLower", "1");
+            ActCompare.this.startActivityForResult(ItemSelectionIntent, REQUEST_CODE);
         }
     };
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Toast.makeText(this, "called", Toast.LENGTH_SHORT);
-        Toast.makeText(this, data.getExtras().getString("item"), Toast.LENGTH_LONG).show();
+        if (requestCode == REQUEST_CODE) {
+            //displayItem(data.getExtras().getString("item"), data.getExtras().getShort("upperOrLower"));
+            Toast.makeText(this, data.getExtras().getString("item"), Toast.LENGTH_LONG).show();
+            EnergyCarrier result = new Select().from(EnergyCarrier.class).where("Name = ?", data.getExtras().getString("item")).executeSingle();
+            CompareItem item = new CompareItem(result);
+            setItem(item, Integer.parseInt(data.getExtras().getString("upperOrLower")));
+        }
+        else {
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+        }
     }
-
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Bundle result = getIntent().getExtras();
-        String upperOrLower = result.getString("upperOrLower");
-        String item = result.getString("item");
-        Toast.makeText(this, upperOrLower + ", " + item, Toast.LENGTH_LONG).show();
-    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -241,20 +236,41 @@ public class ActCompare extends AppCompatActivity {
             case 0:
                 // hier Oberfläche 1 updaten
                 upperItem.setText(item.carrier.name);
-
-                //Toast.makeText(this, item.carrier.variants().size(), Toast.LENGTH_LONG).show();
-
                 List<Variant> variants = item.carrier.variants();
-                
-                List<String> variantNames = new ArrayList<String>();
-                for (Variant v : variants) {
-                    variantNames.add(v.name);
+
+                LinearLayout layout = (LinearLayout) findViewById(R.id.layoutSpinnerUpper);
+                layout.removeAllViews();
+
+                List<Integer> groups = new ArrayList<>();
+
+                for (Variant variant : variants) {
+                    if (!groups.contains(variant.variantGroup)) {
+                        groups.add(variant.variantGroup);
+                    }
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
+                item.variants.clear();
 
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerVariante.setAdapter(adapter);
+                for (int groupID : groups) {
+                    Spinner spinner = new Spinner(this);
+                    layout.addView(spinner);
+
+                    List<String> variantNames = new ArrayList<>();
+
+                    for (Variant variant : variants) {
+                        if (groupID == variant.variantGroup) {
+                            if (variantNames.size() == 0) {
+                                item.variants.add(variant);
+                            }
+                            variantNames.add(variant.name);
+                        }
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
+
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinner.setAdapter(adapter);
+                }
 
                 upperItemCategory.setText(item.carrier.category.name);
 
@@ -274,6 +290,43 @@ public class ActCompare extends AppCompatActivity {
                 // hier Oberfläche 2 updaten
                 lowerItem.setText(item.carrier.name);
                 lowerItemCategory.setText(item.carrier.category.name);
+
+                variants = item.carrier.variants();
+
+                layout = (LinearLayout) findViewById(R.id.layoutSpinnerLower);
+                layout.removeAllViews();
+
+                groups = new ArrayList<>();
+
+                for (Variant variant : variants) {
+                    if (!groups.contains(variant.variantGroup)) {
+                        groups.add(variant.variantGroup);
+                    }
+                }
+
+                item.variants.clear();
+
+                for (int groupID : groups) {
+                    Spinner spinner = new Spinner(this);
+                    layout.addView(spinner);
+
+                    List<String> variantNames = new ArrayList<>();
+
+                    for (Variant variant : variants) {
+                        if (groupID == variant.variantGroup) {
+                            if (variantNames.size() == 0) {
+                                item.variants.add(variant);
+                            }
+
+                            variantNames.add(variant.name);
+                        }
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
+
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinner.setAdapter(adapter);
+                }
 
                 label = (TextView) findViewById(R.id.txtLabelLower);
                 label.setText(item.carrier.unit.name);
