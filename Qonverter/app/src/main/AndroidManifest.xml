@@ -19,6 +19,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".ActCompare"
             android:label="@string/app_name"
@@ -29,15 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".ActChoose"
-            android:label="@string/title_activity_act_choose"
-            android:parentActivityName=".ActCompare"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="eu.highq.qonverter.ActCompare" />
-        </activity>
+
         <activity
             android:name=".ActMeasure"
             android:label="@string/title_activity_act_measure"
@@ -66,7 +59,14 @@
         <activity
             android:name=".ItemSelectionActivity"
             android:label="@string/title_activity_item_selection"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".ActCompare"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eu.highq.qonverter.ActCompare"
+                />
+        </activity>
+
     </application>
 
 </manifest>

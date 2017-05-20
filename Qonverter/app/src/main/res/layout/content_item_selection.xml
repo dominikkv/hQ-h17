@@ -8,4 +8,24 @@
     tools:context="eu.highq.qonverter.ItemSelectionActivity"
     tools:showIn="@layout/activity_item_selection">
 
+    <LinearLayout
+        android:id="@+id/layoutItemSelection"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
+
+        <ListView
+            android:id="@+id/listViewItemSelection"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+        </ListView>
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>
