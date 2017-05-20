@@ -57,14 +57,28 @@ public class Variant extends Model {
         variant.carrier = carrier;
         variant.name = "Fessenheim";
         variant.variantGroup = 1;
-        variant.factor = 1.1;
+        variant.factor = 1.0;
         variant.save();
 
         variant = new Variant();
         variant.carrier = carrier;
-        variant.name = "Philippsburg";
+        variant.name = "ISAR-2";
         variant.variantGroup = 1;
-        variant.factor = 1.2;
+        variant.factor = 0.80;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Tschernobyl";
+        variant.variantGroup = 1;
+        variant.factor = 2.0;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Fukushima";
+        variant.variantGroup = 1;
+        variant.factor = 2.58;
         variant.save();
     }
 }

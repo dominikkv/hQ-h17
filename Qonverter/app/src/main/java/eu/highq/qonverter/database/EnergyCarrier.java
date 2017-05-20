@@ -59,10 +59,11 @@ public class EnergyCarrier extends Model {
         carrier.description = "Energiegehalt Bier";
         carrier.save();
 
+//-----Kraftwerke
         carrier = new EnergyCarrier();
         carrier.name = "Atomkraftwerk";
         carrier.category = categoryKraftwerk;
-        carrier.energy = 12345;
+        carrier.energy = 6330935252l;
         carrier.unit = unitZeit;
         carrier.description = "Wie lange muss das Kraftwerk laufen?";
         carrier.save();
