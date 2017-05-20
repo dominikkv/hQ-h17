@@ -8,10 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import java.util.List;
-import java.util.ArrayList;
 
 public class ActCompare extends AppCompatActivity {
 
@@ -30,21 +26,6 @@ public class ActCompare extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-        //Fill spinner items
-        List<String> spinnerArray =  new ArrayList<>();
-        spinnerArray.add("Item 1");
-        spinnerArray.add("Item 2");
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerArray);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner UpperItems = (Spinner) findViewById(R.id.spinnerUpperSelectItem);
-        UpperItems.setAdapter(adapter);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner LowerItems = (Spinner) findViewById(R.id.spinnerLowerSelectItem);
-        LowerItems.setAdapter(adapter);
     }
 
     @Override

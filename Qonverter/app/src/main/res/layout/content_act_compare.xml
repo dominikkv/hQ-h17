@@ -29,8 +29,7 @@
             <RelativeLayout
                 android:id="@+id/layoutRelativeUpper"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_alignParentBottom="true" >
+                android:layout_height="fill_parent" >
 
                 <TextView
                     android:id="@+id/txtItemUpper"
@@ -76,8 +75,7 @@
             <RelativeLayout
                 android:id="@+id/layoutRelativeLower"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_alignParentBottom="true" >
+                android:layout_height="fill_parent">
 
                 <TextView
                     android:id="@+id/txtItemLower"
