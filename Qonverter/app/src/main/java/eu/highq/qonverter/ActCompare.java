@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 public class ActCompare extends AppCompatActivity {
 
+    public TextView upperItem, lowerItem;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Main Activity
@@ -32,9 +34,28 @@ public class ActCompare extends AppCompatActivity {
             }
         });
 
+        upperItem = (TextView) findViewById(R.id.txtItemUpper);
+        lowerItem = (TextView) findViewById(R.id.txtItemLower);
+
+        //OnClickListener for Items
+        upperItem.setOnClickListener(itemUpperOnClick);
+        lowerItem.setOnClickListener(itemLowerOnClick);
+
         //Shuffle entries at start of application
         Shuffle();
     }
+
+    View.OnClickListener itemUpperOnClick = new View.OnClickListener() {
+        public void onClick(View v) {
+            Snackbar.make(v, "Upper item clicked", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+        }
+    };
+
+    View.OnClickListener itemLowerOnClick = new View.OnClickListener() {
+        public void onClick(View v) {
+            Snackbar.make(v, "Lower item clicked", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+        }
+    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -60,9 +81,6 @@ public class ActCompare extends AppCompatActivity {
 
     //Shuffle items
     private void Shuffle() {
-        TextView upperItem = (TextView) findViewById(R.id.txtItemUpper);
-        TextView lowerItem = (TextView) findViewById(R.id.txtItemLower);
-
         //Database integration -> Select two random items
 
         upperItem.setText(R.string.main_placeholder_item_upper);
