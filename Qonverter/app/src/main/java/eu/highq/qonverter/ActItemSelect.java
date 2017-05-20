@@ -11,8 +11,14 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.activeandroid.query.Select;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import eu.highq.qonverter.database.EnergyCarrier;
 
 public class ActItemSelect extends AppCompatActivity {
 
@@ -39,16 +45,12 @@ public class ActItemSelect extends AppCompatActivity {
         itemSearch = (EditText) findViewById(R.id.item_search);
         listView = (ListView) findViewById(R.id.item_list_view);
 
-        // Listview Adapter
-        ArrayAdapter<String> adapter;
+        List<EnergyCarrier> itemList = new Select().from(EnergyCarrier.class).execute();
+        List aList = new ArrayList();
 
-        // ArrayList for Listview
-        ArrayList<HashMap<String, String>> itemList;
-
-        // Listview Data
-        String items[] = { "Dell Inspiron", "HTC One X", "HTC Wildfire S", "HTC Sense", "HTC Sensation XE",
-                "iPhone 4S", "Samsung Galaxy Note 800",
-                "Samsung Galaxy S3", "MacBook Air", "Mac Mini", "MacBook Pro", "One Plus 3", "One Plus 3T" };
+        for (EnergyCarrier carrier : itemList){
+            aList.add(carrier.name);
+        }
 
         listView = (ListView) findViewById(R.id.item_list_view);
         itemSearch = (EditText) findViewById(R.id.item_search);
@@ -56,7 +58,7 @@ public class ActItemSelect extends AppCompatActivity {
         listView.setTextFilterEnabled(true);
 
         // Adding items to listview
-        adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.item_name, items);
+        adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.item_name, aList);
         listView.setAdapter(adapter);
 
         itemSearch.addTextChangedListener(new TextWatcher() {
