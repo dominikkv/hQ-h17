@@ -277,13 +277,33 @@ public class ActCompare extends AppCompatActivity {
                 TextView label = (TextView) findViewById(R.id.txtLabelUpper);
                 label.setText(item.carrier.unit.name);
 
-                UnitAbbreviation abbr = item.carrier.unit.abbreviations().get(0);
+                List<UnitAbbreviation> abbrList = item.carrier.unit.abbreviations();
+
+                UnitAbbreviation a_big = abbrList.get(0);
+                UnitAbbreviation a_small = abbrList.get(0);
+
+                for (UnitAbbreviation a : abbrList) {
+                    double unitvalue = item.factor / a.factor;
+                    if ((unitvalue < 1) && (unitvalue > item.factor / a_big.factor)) {
+                        a_big = a;
+                    }
+                    if ((unitvalue > 1) && (unitvalue < item.factor / a_small.factor)) {
+                        a_small = a;
+                    }
+                }
+
+                UnitAbbreviation abbr;
+                if (item.factor / a_small.factor < 100) {
+                    abbr = a_small;
+                } else {
+                    abbr = a_big;
+                }
 
                 TextView unit = (TextView) findViewById(R.id.txtUnitUpper);
                 unit.setText(abbr.abbreviation);
 
                 EditText value = (EditText) findViewById(R.id.edtValueUpper);
-                value.setText(String.format("%.2f", (item.factor * abbr.factor)));
+                value.setText(String.format("%.2f", (item.factor / abbr.factor)));
 
                 break;
             case 1:
@@ -331,13 +351,32 @@ public class ActCompare extends AppCompatActivity {
                 label = (TextView) findViewById(R.id.txtLabelLower);
                 label.setText(item.carrier.unit.name);
 
-                abbr = item.carrier.unit.abbreviations().get(0);
+                abbrList = item.carrier.unit.abbreviations();
+
+                a_big = abbrList.get(0);
+                a_small = abbrList.get(0);
+
+                for (UnitAbbreviation a : abbrList) {
+                    double unitvalue = item.factor / a.factor;
+                    if ((unitvalue < 1) && (unitvalue > item.factor / a_big.factor)) {
+                        a_big = a;
+                    }
+                    if ((unitvalue > 1) && (unitvalue < item.factor / a_small.factor)) {
+                        a_small = a;
+                    }
+                }
+
+                if (item.factor / a_small.factor < 100) {
+                    abbr = a_small;
+                } else {
+                    abbr = a_big;
+                }
 
                 unit = (TextView) findViewById(R.id.txtUnitLower);
                 unit.setText(abbr.abbreviation);
 
                 value = (EditText) findViewById(R.id.edtValueLower);
-                value.setText(String.format("%.2f", (item.factor * abbr.factor)));
+                value.setText(String.format("%.2f", (item.factor / abbr.factor)));
 
                 break;
             default:

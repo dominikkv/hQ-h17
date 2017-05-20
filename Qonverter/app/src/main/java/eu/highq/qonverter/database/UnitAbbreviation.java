@@ -66,37 +66,37 @@ public class UnitAbbreviation extends Model {
 
         unitAbbr = new UnitAbbreviation();
         unitAbbr.unit = unit;
-        unitAbbr.factor = 1.0;
+        unitAbbr.factor = 1.0 / (60 * 60);
         unitAbbr.abbreviation = "Sekunden";
         unitAbbr.save();
 
         unitAbbr = new UnitAbbreviation();
         unitAbbr.unit = unit;
-        unitAbbr.factor = 60.0;
+        unitAbbr.factor = 1.0 / 60;
         unitAbbr.abbreviation = "Minute";
         unitAbbr.save();
 
         unitAbbr = new UnitAbbreviation();
         unitAbbr.unit = unit;
-        unitAbbr.factor = 60.0 * 60;
+        unitAbbr.factor = 1.0;
         unitAbbr.abbreviation = "Stunde";
         unitAbbr.save();
 
         unitAbbr = new UnitAbbreviation();
         unitAbbr.unit = unit;
-        unitAbbr.factor = 60.0 * 60 * 24;
+        unitAbbr.factor = 24.0;
         unitAbbr.abbreviation = "Tage";
         unitAbbr.save();
 
         unitAbbr = new UnitAbbreviation();
         unitAbbr.unit = unit;
-        unitAbbr.factor = 60.0 * 60 * 24 * 30;
+        unitAbbr.factor = 24.0 * 30;
         unitAbbr.abbreviation = "Monate";
         unitAbbr.save();
 
         unitAbbr = new UnitAbbreviation();
         unitAbbr.unit = unit;
-        unitAbbr.factor = 60.0 * 60 * 24 * 365;
+        unitAbbr.factor = 24.0 * 365;
         unitAbbr.abbreviation = "Jahre";
         unitAbbr.save();
     }
