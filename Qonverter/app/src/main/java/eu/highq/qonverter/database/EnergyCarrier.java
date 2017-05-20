@@ -38,6 +38,7 @@ public class EnergyCarrier extends Model {
         Category categoryTransport = new Select().from(Category.class).where("Name = ?", "Transportmittel").executeSingle();
         Category categoryLebensmittel = new Select().from(Category.class).where("Name = ?", "Lebensmittel").executeSingle();
         Category categoryKraftwerk = new Select().from(Category.class).where("Name = ?", "Kraftwerke").executeSingle();
+        Category categoryBewegung = new Select().from(Category.class).where("Name = ?", "Bewegung").executeSingle();
 
         EnergyCarrier carrier = new EnergyCarrier();
         carrier.name = "Auto";

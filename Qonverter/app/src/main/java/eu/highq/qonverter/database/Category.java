@@ -28,5 +28,11 @@ public class Category extends Model {
         category = new Category();
         category.name = "Kraftwerke";
         category.save();
+
+        category = new Category();
+        category.name = "Bewegung";
+        category.save();
+
+
     }
 }
