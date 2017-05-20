@@ -3,8 +3,20 @@
     <string name="action_settings">Einstellungen</string>
     <string name="action_add">Kategorie hinzufügen</string>
     <string name="action_info">Über</string>
+
     <string name="title_activity_act_choose">Energieträger wählen</string>
     <string name="title_activity_act_measure">Aufzeichnen</string>
+
+    <!-- Main View -->
+
+    <string name="main_view_upper_item_content_description">Upper Item</string>
+    <string name="main_view_lower_item_content_description">Lower Item</string>
+
+    <string name="main_placeholder_item_upper">Item 1</string>
+    <string name="main_placeholder_item_lower">Item 2</string>
+
+    <!-- Main View End -->
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
