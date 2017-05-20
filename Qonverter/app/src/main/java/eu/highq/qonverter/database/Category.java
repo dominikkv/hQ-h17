@@ -15,4 +15,18 @@ public class Category extends Model {
     public List<EnergyCarrier> carriers() {
         return getMany(EnergyCarrier.class, "Category");
     }
+
+    public static void prePopulate() {
+        Category category = new Category();
+        category.name = "Transportmittel";
+        category.save();
+
+        category = new Category();
+        category.name = "Lebensmittel";
+        category.save();
+
+        category = new Category();
+        category.name = "Kraftwerke";
+        category.save();
+    }
 }

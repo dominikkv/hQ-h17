@@ -4,15 +4,33 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
+import java.util.List;
+
 @Table(name = "tbl_Units", id = "_id")
 public class Unit extends Model {
 
     @Column(name = "Name")
     public String name;
 
-    @Column(name = "Factor")
-    public float factor;
+    public List<UnitAbbreviation> abbreviations() {
+        return getMany(UnitAbbreviation.class, "Unit");
+    }
 
-    @Column(name = "Abbreviation")
-    public String abbreviation;
+    public static void prePopulate() {
+        Unit unit = new Unit();
+        unit.name = "Gewicht";
+        unit.save();
+
+        unit = new Unit();
+        unit.name = "Strecke";
+        unit.save();
+
+        unit = new Unit();
+        unit.name = "Zeit";
+        unit.save();
+
+        unit = new Unit();
+        unit.name = "Volumen";
+        unit.save();
+    }
 }

@@ -11,10 +11,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.activeandroid.query.Select;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import eu.highq.qonverter.database.Category;
 import eu.highq.qonverter.database.EnergyCarrier;
+import eu.highq.qonverter.database.Unit;
+import eu.highq.qonverter.database.UnitAbbreviation;
+import eu.highq.qonverter.database.Variant;
 import eu.highq.qonverter.models.CompareItem;
 
 public class ActCompare extends AppCompatActivity {
@@ -53,8 +59,23 @@ public class ActCompare extends AppCompatActivity {
         this.items.add(null);
         this.items.add(null);
 
-        setItem(generateRandomItem(), 0);
-        setItem(generateRandomItem(), 1);
+        if (new Select().from(EnergyCarrier.class).count() == 0) {
+            Category.prePopulate();
+            Unit.prePopulate();
+            UnitAbbreviation.prePopulate();
+            EnergyCarrier.prePopulate();
+            Variant.prePopulate();
+        }
+
+        CompareItem firstItem = generateRandomItem();
+        CompareItem secondItem;
+
+        do {
+            secondItem = generateRandomItem();
+        } while (firstItem.carrier.name == secondItem.carrier.name);
+
+        setItem(firstItem, 0);
+        setItem(secondItem, 1);
     }
 
     private CompareItem generateRandomItem() {
