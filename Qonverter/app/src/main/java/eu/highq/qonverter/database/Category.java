@@ -33,6 +33,13 @@ public class Category extends Model {
         category.name = "Bewegung";
         category.save();
 
+        category = new Category();
+        category.name = "Brennstoffe";
+        category.save();
+
+        category = new Category();
+        category.name = "Haushaltsgeräte";
+        category.save();
 
     }
 }
