@@ -82,6 +82,9 @@ public class ActCompare extends AppCompatActivity {
                         updateItem(other, 1);
                     }
                 }
+                else {
+                    ((EditText) view).setText("");
+                }
             }
         });
 
@@ -97,6 +100,8 @@ public class ActCompare extends AppCompatActivity {
                     if (other != null) {
                         updateItem(other, 0);
                     }
+                } else {
+                    ((EditText) view).setText("");
                 }
             }
         });
@@ -229,7 +234,7 @@ public class ActCompare extends AppCompatActivity {
                 unit.setText(abbr.abbreviation);
 
                 EditText value = (EditText) findViewById(R.id.edtValueUpper);
-                value.setText(Double.valueOf(item.factor * abbr.factor).toString());
+                value.setText(String.format("%.2f", (item.factor * abbr.factor)));
 
                 break;
             case 1:
@@ -246,7 +251,7 @@ public class ActCompare extends AppCompatActivity {
                 unit.setText(abbr.abbreviation);
 
                 value = (EditText) findViewById(R.id.edtValueLower);
-                value.setText(Double.valueOf(item.factor * abbr.factor).toString());
+                value.setText(String.format("%.2f", (item.factor * abbr.factor)));
 
                 break;
             default:
