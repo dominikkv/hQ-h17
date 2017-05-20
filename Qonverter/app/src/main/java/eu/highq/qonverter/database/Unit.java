@@ -4,7 +4,7 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
-@Table(name = "tbl_Units")
+@Table(name = "tbl_Units", id = "_id")
 public class Unit extends Model {
 
     @Column(name = "Name")

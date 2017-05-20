@@ -5,7 +5,7 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
-@Table(name = "tbl_EnergyCarriers")
+@Table(name = "tbl_EnergyCarriers", id = "_id")
 public class EnergyCarrier extends Model {
 
     @Column(name = "Name")
