@@ -136,7 +136,9 @@ public class ActCompare extends AppCompatActivity {
         public void onClick(View view) {
             Intent ItemSelectionIntent = new Intent(view.getContext(), ActItemSelect.class);
             ItemSelectionIntent.putExtra("item", "1");
-            view.getContext().startActivity(ItemSelectionIntent);
+            ItemSelectionIntent.setAction(ItemSelectionIntent.ACTION_ANSWER);
+            //view.getContext().startActivity(ItemSelectionIntent);
+            ActCompare.this.startActivityForResult(ItemSelectionIntent, RESULT_OK);
         }
     };
 
@@ -147,6 +149,11 @@ public class ActCompare extends AppCompatActivity {
             view.getContext().startActivity(ItemSelectionIntent);
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String test =  data.getStringExtra("item");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -200,13 +207,6 @@ public class ActCompare extends AppCompatActivity {
                 //Toast.makeText(this, item.carrier.variants().size(), Toast.LENGTH_LONG).show();
 
                 List<Variant> variants = item.carrier.variants();
-
-                try {
-                    Toast.makeText(this, variants.size(), Toast.LENGTH_LONG).show();
-                }
-                catch (Exception ex) {
-                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
-                }
                 
                 List<String> variantNames = new ArrayList<String>();
                 for (Variant v : variants) {
