@@ -61,6 +61,30 @@ public class EnergyCarrier extends Model {
         carrier.description = "Energiegehalt verschiedener Getränke";
         carrier.save();
 
+        carrier = new EnergyCarrier();
+        carrier.name = "Ei";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 6276;
+        carrier.unit = unitGewicht;
+        carrier.description = "";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Joghurt";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 2092;
+        carrier.unit = unitGewicht;
+        carrier.description = "";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Süßigkeiten";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 3347;
+        carrier.unit = unitGewicht;
+        carrier.description = "";
+        carrier.save();
+
 //-----Kraftwerke
         carrier = new EnergyCarrier();
         carrier.name = "Atomkraftwerk";

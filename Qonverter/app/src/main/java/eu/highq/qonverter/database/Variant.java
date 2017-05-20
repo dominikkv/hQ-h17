@@ -164,5 +164,52 @@ public class Variant extends Model {
         variant.factor = 0.98;
         variant.save();
 
+        carrier = new Select().from(EnergyCarrier.class).where("Name = ?", "Joghurt").executeSingle();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Joghurt 1,5 %";
+        variant.variantGroup = 1;
+        variant.factor = 1.0;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Joghurt 3,5 % mit Früchten";
+        variant.variantGroup = 1;
+        variant.factor = 1.8;
+        variant.save();
+
+        carrier = new Select().from(EnergyCarrier.class).where("Name = ?", "Süßigkeiten").executeSingle();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Pfannkuchen";
+        variant.variantGroup = 1;
+        variant.factor = 1.0;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Apfelmus";
+        variant.variantGroup = 1;
+        variant.factor = 1.25;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Mousse";
+        variant.variantGroup = 1;
+        variant.factor = 4.13;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Schokolade";
+        variant.variantGroup = 1;
+        variant.factor = 6.63;
+        variant.save();
+
+
     }
 }
