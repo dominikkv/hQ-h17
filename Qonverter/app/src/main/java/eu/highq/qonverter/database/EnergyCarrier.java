@@ -366,5 +366,231 @@ public class EnergyCarrier extends Model {
         carrier.description = "Holz(trocken)";
         carrier.save();
 
+//------Haushaltsgeräte
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fernseher (Flach)";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 449;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fernseher (Röhre)";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 395;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fernseher (Plasma)";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 1079;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Durchschnittlicher Haushalt";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 1500;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "E27 Glühlampe";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 215;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "E27 Energiesparlampe";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 97;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Halogen-Deckenfluter";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 1079;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Staubsauger";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 4316;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fön";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 5035;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Mikrowellenherd";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 3597;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Herd";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 17985;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Dunstabzugshaube";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 359;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Wasserkocher";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 7194;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Kaffeemaschine";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 3237;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Kühlschrank";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 104;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Tiefkühltruhe";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 118;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Telefonanlage";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 14;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Wlanrouter";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 21;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Durchschnittscomputer";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 359;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "HighendComputer";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 719;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Bildschirm (Röhre 17 Zoll)";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 287;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Bildschirm (Flach 17 Zoll)";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 107;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "neuer Laptop (Leerlauf)";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 107;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Beamer";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 899;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "DVD-Player";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 71;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Videorekorder";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 43;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Hifi-Verstärker";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 107;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Toaster";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 3597;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
     }
 }
