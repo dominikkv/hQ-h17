@@ -60,7 +60,8 @@
             android:name=".ActItemSelect"
             android:label="@string/title_activity_item_selection"
             android:parentActivityName=".ActCompare"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="eu.highq.qonverter.ActCompare"
