@@ -8,16 +8,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 public class ActCompare extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Main Activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act_compare);
+
+        //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Floating Action Button (Invisible)
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -26,6 +31,9 @@ public class ActCompare extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        //Shuffle entries at start of application
+        Shuffle();
     }
 
     @Override
@@ -48,5 +56,18 @@ public class ActCompare extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    //Shuffle items
+    private void Shuffle() {
+        TextView upperItem = (TextView) findViewById(R.id.txtItemUpper);
+        TextView lowerItem = (TextView) findViewById(R.id.txtItemLower);
+
+        //Database integration -> Select two random items
+
+        upperItem.setText(R.string.main_placeholder_item_upper);
+        lowerItem.setText(R.string.main_placeholder_item_lower);
+
+        //Compare
     }
 }
