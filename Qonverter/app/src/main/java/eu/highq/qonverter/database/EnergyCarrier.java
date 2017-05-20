@@ -34,6 +34,7 @@ public class EnergyCarrier extends Model {
         Unit unitZeit = new Select().from(Unit.class).where("Name = ?", "Zeit").executeSingle();
         Unit unitGewicht = new Select().from(Unit.class).where("Name = ?", "Gewicht").executeSingle();
         Unit unitVolumen = new Select().from(Unit.class).where("Name = ?", "Volumen").executeSingle();
+        Unit unitAnzahl = new Select().from(Unit.class).where("Name = ?", "Anzahl").executeSingle();
 
         Category categoryTransport = new Select().from(Category.class).where("Name = ?", "Transportmittel").executeSingle();
         Category categoryLebensmittel = new Select().from(Category.class).where("Name = ?", "Lebensmittel").executeSingle();
