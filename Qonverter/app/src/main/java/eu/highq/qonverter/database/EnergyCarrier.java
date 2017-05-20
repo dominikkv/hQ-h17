@@ -63,5 +63,15 @@ public class EnergyCarrier extends Model {
         carrier.unit = unitZeit;
         carrier.description = "Wie lange muss das Kraftwerk laufen?";
         carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fahrrad fahren";
+        carrier.category = categoryBewegung;
+        carrier.energy = 12345;
+        carrier.unit = unitStrecke;
+        carrier.description = "Wie weit muss man mit dem Rad fahren?";
+        carrier.save();
+
+
     }
 }
