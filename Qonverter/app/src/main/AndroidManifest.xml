@@ -38,6 +38,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="eu.highq.qonverter.ActCompare" />
         </activity>
+
         <activity
             android:name=".ActMeasure"
             android:label="@string/title_activity_act_measure"
@@ -51,9 +52,14 @@
         <meta-data
             android:name="AA_DB_NAME"
             android:value="EnergyDB" />
+
         <meta-data
             android:name="AA_DB_VERSION"
             android:value="1" />
+
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="eu.highq.qonverter.database.EnergyCarrier, eu.highq.qonverter.database.Category, eu.highq.qonverter.database.Unit, eu.highq.qonverter.database.Variant" />
 
         <provider
             android:name="com.activeandroid.content.ContentProvider"
