@@ -101,12 +101,13 @@
                             android:text="Unit"/>
                     </LinearLayout>
 
-                    <Spinner
-                        android:id="@+id/spinnerVariante"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
+                    <LinearLayout
+                        android:id="@+id/layoutSpinnerUpper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                    </Spinner>
+                    </LinearLayout>
 
                     <ImageView
                         android:id="@+id/imageUpper"
@@ -160,6 +161,14 @@
                         android:layout_height="wrap_content">
 
                     </Spinner>
+
+                    <LinearLayout
+                        android:id="@+id/layoutSpinnerLower"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"

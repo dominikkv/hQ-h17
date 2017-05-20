@@ -1,7 +1,6 @@
 package eu.highq.qonverter;
 
 import android.os.Bundle;
-import android.provider.Telephony;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +12,9 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -38,8 +39,6 @@ public class ActCompare extends AppCompatActivity {
 
     public TextView upperItem, lowerItem;
     public TextView upperItemCategory, lowerItemCategory;
-
-    public Spinner spinnerVariante;
 
     public static final int REQUEST_CODE = 1;
 
@@ -67,7 +66,6 @@ public class ActCompare extends AppCompatActivity {
         lowerItem = (TextView) findViewById(R.id.txtItemLower);
         upperItemCategory = (TextView) findViewById(R.id.txtItemUpperCategory);
         lowerItemCategory = (TextView) findViewById(R.id.txtItemLowerCategory);
-        spinnerVariante = (Spinner) findViewById(R.id.spinnerVariante);
 
         //OnClickListener for Items
         upperItem.setOnClickListener(itemUpperOnClick);
@@ -227,20 +225,41 @@ public class ActCompare extends AppCompatActivity {
             case 0:
                 // hier Oberfläche 1 updaten
                 upperItem.setText(item.carrier.name);
-
-                //Toast.makeText(this, item.carrier.variants().size(), Toast.LENGTH_LONG).show();
-
                 List<Variant> variants = item.carrier.variants();
-                
-                List<String> variantNames = new ArrayList<String>();
-                for (Variant v : variants) {
-                    variantNames.add(v.name);
+
+                LinearLayout layout = (LinearLayout) findViewById(R.id.layoutSpinnerUpper);
+                layout.removeAllViews();
+
+                List<Integer> groups = new ArrayList<>();
+
+                for (Variant variant : variants) {
+                    if (!groups.contains(variant.variantGroup)) {
+                        groups.add(variant.variantGroup);
+                    }
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
+                item.variants.clear();
 
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerVariante.setAdapter(adapter);
+                for (int groupID : groups) {
+                    Spinner spinner = new Spinner(this);
+                    layout.addView(spinner);
+
+                    List<String> variantNames = new ArrayList<>();
+
+                    for (Variant variant : variants) {
+                        if (groupID == variant.variantGroup) {
+                            if (variantNames.size() == 0) {
+                                item.variants.add(variant);
+                            }
+                            variantNames.add(variant.name);
+                        }
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
+
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinner.setAdapter(adapter);
+                }
 
                 upperItemCategory.setText(item.carrier.category.name);
 
@@ -260,6 +279,43 @@ public class ActCompare extends AppCompatActivity {
                 // hier Oberfläche 2 updaten
                 lowerItem.setText(item.carrier.name);
                 lowerItemCategory.setText(item.carrier.category.name);
+
+                variants = item.carrier.variants();
+
+                layout = (LinearLayout) findViewById(R.id.layoutSpinnerLower);
+                layout.removeAllViews();
+
+                groups = new ArrayList<>();
+
+                for (Variant variant : variants) {
+                    if (!groups.contains(variant.variantGroup)) {
+                        groups.add(variant.variantGroup);
+                    }
+                }
+
+                item.variants.clear();
+
+                for (int groupID : groups) {
+                    Spinner spinner = new Spinner(this);
+                    layout.addView(spinner);
+
+                    List<String> variantNames = new ArrayList<>();
+
+                    for (Variant variant : variants) {
+                        if (groupID == variant.variantGroup) {
+                            if (variantNames.size() == 0) {
+                                item.variants.add(variant);
+                            }
+
+                            variantNames.add(variant.name);
+                        }
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
+
+                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    spinner.setAdapter(adapter);
+                }
 
                 label = (TextView) findViewById(R.id.txtLabelLower);
                 label.setText(item.carrier.unit.name);
