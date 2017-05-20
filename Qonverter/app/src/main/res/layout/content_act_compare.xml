@@ -83,20 +83,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/resultLayout"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
-            android:layout_width="fill_parent"
-            android:paddingTop="6dp"
-            android:paddingBottom="6dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="@color/colorMainLower" >
-
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/layoutInputLower"
             android:orientation="horizontal"
             android:layout_weight="1"
