@@ -46,7 +46,7 @@ public class Variant extends Model {
 
         variant = new Variant();
         variant.carrier = carrier;
-        variant.name = "Autbahn";
+        variant.name = "Autobahn";
         variant.variantGroup = 2;
         variant.factor = 1.1;
         variant.save();
