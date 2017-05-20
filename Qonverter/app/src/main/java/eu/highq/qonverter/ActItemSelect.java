@@ -14,17 +14,27 @@ import android.widget.EditText;
 import android.widget.ListView;
 import com.activeandroid.query.Select;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import eu.highq.qonverter.database.EnergyCarrier;
-
-import static android.R.id.list;
 
 public class ActItemSelect extends AppCompatActivity {
 
     EditText itemSearch;
     ListView listView;
     ArrayAdapter<String> adapter;
+
+    private static Comparator<String> ALPHABETICAL_ORDER = new Comparator<String>() {
+        public int compare(String str1, String str2) {
+            int res = String.CASE_INSENSITIVE_ORDER.compare(str1, str2);
+            if (res == 0) {
+                res = str1.compareTo(str2);
+            }
+            return res;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +55,37 @@ public class ActItemSelect extends AppCompatActivity {
         itemSearch = (EditText) findViewById(R.id.item_search);
         listView = (ListView) findViewById(R.id.item_list_view);
 
+        //Adding items to custom adapter
+        //customListViewAdapter = new CustomListViewAdapter(this);
         List<EnergyCarrier> itemList = new Select().from(EnergyCarrier.class).execute();
+
         List aList = new ArrayList();
 
         for (EnergyCarrier carrier : itemList){
             aList.add(carrier.name);
         }
 
-        listView = (ListView) findViewById(R.id.item_list_view);
-        itemSearch = (EditText) findViewById(R.id.item_search);
+        Collections.sort(aList, ALPHABETICAL_ORDER);
+
+        /*List<EnergyCarrier> categories = new ArrayList<EnergyCarrier>();
+
+        for(int i = 0; i < aList.size() - 1; i++) {
+            if (!categories.contains(itemList.get(i))) {
+                customListViewAdapter.addItem(itemList.get(i).name);
+            }
+            else {
+                categories.add(itemList.get(i));
+                customListViewAdapter.addSectionHeaderItem(itemList.get(i).category.name);
+                customListViewAdapter.addItem(itemList.get(i).name);
+            }
+        }
+        listView.setAdapter(customListViewAdapter);*/
 
         listView.setTextFilterEnabled(true);
 
         // Adding items to listview
         adapter = new ArrayAdapter<String>(this, R.layout.list_item, R.id.item_name, aList);
+
         listView.setAdapter(adapter);
 
         itemSearch.addTextChangedListener(new TextWatcher() {

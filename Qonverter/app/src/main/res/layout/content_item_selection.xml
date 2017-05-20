@@ -23,6 +23,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/item_selection_searchbar_hint"
+            android:backgroundTint="@android:color/holo_blue_bright"
+            android:textCursorDrawable="@android:color/holo_blue_dark"
+            
             android:inputType="text" />
 
         <!-- List View -->

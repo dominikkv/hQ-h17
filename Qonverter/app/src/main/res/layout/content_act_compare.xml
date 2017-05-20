@@ -91,6 +91,8 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:inputType="numberDecimal"
+                            android:backgroundTint="@android:color/holo_blue_bright"
+                            android:textCursorDrawable="@android:color/holo_blue_dark"
                             android:layout_weight="1"/>
 
                         <TextView
@@ -198,6 +200,8 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:inputType="numberDecimal"
+                            android:backgroundTint="@android:color/holo_blue_bright"
+                            android:textCursorDrawable="@android:color/holo_blue_dark"
                             android:layout_weight="1"/>
 
                         <TextView
