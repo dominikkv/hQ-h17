@@ -79,7 +79,7 @@ public class ActCompare extends AppCompatActivity {
     }
 
     private CompareItem generateRandomItem() {
-        EnergyCarrier carrier = new EnergyCarrier();
+        EnergyCarrier carrier = new Select().from(EnergyCarrier.class).orderBy("RANDOM()").executeSingle();
         return new CompareItem(carrier);
     }
 

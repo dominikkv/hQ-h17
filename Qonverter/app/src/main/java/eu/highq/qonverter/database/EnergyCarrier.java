@@ -25,6 +25,9 @@ public class EnergyCarrier extends Model {
     @Column(name = "Energy")
     public long energy;
 
+    @Column(name = "Description")
+    public String description;
+
     public List<Variant> variants() {
         return getMany(Variant.class, "Carrier");
     }
@@ -45,6 +48,7 @@ public class EnergyCarrier extends Model {
         carrier.energy = 12345;
         carrier.unit = unitStrecke;
         carrier.unitFactor = 1.4;
+        carrier.description = "Wie weit kommt man mit dem Auto, Liter";
         carrier.save();
 
         carrier = new EnergyCarrier();
@@ -53,6 +57,7 @@ public class EnergyCarrier extends Model {
         carrier.energy = 12345;
         carrier.unit = unitVolumen;
         carrier.unitFactor = 1.4;
+        carrier.description = "Energiegehalt Bier";
         carrier.save();
 
         carrier = new EnergyCarrier();
@@ -61,6 +66,7 @@ public class EnergyCarrier extends Model {
         carrier.energy = 12345;
         carrier.unit = unitZeit;
         carrier.unitFactor = 1.4;
+        carrier.description = "Wie lange muss das Kraftwerk laufen?";
         carrier.save();
     }
 }
