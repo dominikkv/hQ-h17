@@ -161,7 +161,7 @@ public class ActCompare extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE) {
             //displayItem(data.getExtras().getString("item"), data.getExtras().getShort("upperOrLower"));
-            Toast.makeText(this, data.getExtras().getString("item"), Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, data.getExtras().getString("item"), Toast.LENGTH_LONG).show();
             EnergyCarrier result = new Select().from(EnergyCarrier.class).where("Name = ?", data.getExtras().getString("item")).executeSingle();
             CompareItem item = new CompareItem(result);
             setItem(item, Integer.parseInt(data.getExtras().getString("upperOrLower")));
