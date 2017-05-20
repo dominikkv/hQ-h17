@@ -121,4 +121,8 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_item_selection">ItemSelectionActivity</string>
+    <string name="title_activity_addcategory">activity_addcategory</string>
+    <string name="title_activity_settings">activity_settings</string>
+    <string name="title_activity_act_settings">act_settings</string>
+    <string name="title_activity_act_addcategory">act_addcategory</string>
 </resources>

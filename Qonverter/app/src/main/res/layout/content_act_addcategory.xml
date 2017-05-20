@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="eu.highq.qonverter.Act_addcategory"
+    tools:showIn="@layout/activity_act_addcategory">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical" android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/popup_addcategory"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/editCategory"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_category"
+            android:inputType="phone" />
+        <Spinner
+            android:id="@+id/editUnit"
+            android:text="@string/edit_unit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:id="@+id/editColor"
+            android:text="@string/edit_color"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_save" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
