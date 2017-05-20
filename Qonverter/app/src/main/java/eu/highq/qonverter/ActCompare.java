@@ -70,44 +70,32 @@ public class ActCompare extends AppCompatActivity {
         lowerItem.setOnClickListener(itemLowerOnClick);
 
         EditText value = (EditText) findViewById(R.id.edtValueUpper);
-        value.addTextChangedListener(new TextWatcher() {
+        value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                CompareItem item = items.get(0);
-                double value = Double.parseDouble(editable.toString());
-                if (value != item.factor) {
+            public void onFocusChange(View view, boolean hasFokus) {
+                if (!hasFokus) {
+                    CompareItem item = items.get(0);
+                    double value = Double.parseDouble(((EditText) view).getText().toString());
                     item.factor = value;
                     CompareItem other = getOther(0);
                     if (other != null) {
-                        updateItem(getOther(0), 1);
+                        updateItem(other, 1);
                     }
                 }
             }
         });
 
         value = (EditText) findViewById(R.id.edtValueLower);
-        value.addTextChangedListener(new TextWatcher() {
+        value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                CompareItem item = items.get(1);
-                double value = Double.parseDouble(editable.toString());
-                if (value != item.factor) {
+            public void onFocusChange(View view, boolean hasFokus) {
+                if (!hasFokus) {
+                    CompareItem item = items.get(1);
+                    double value = Double.parseDouble(((EditText) view).getText().toString());
                     item.factor = value;
                     CompareItem other = getOther(1);
                     if (other != null) {
-                        updateItem(getOther(1), 0);
+                        updateItem(other, 0);
                     }
                 }
             }
