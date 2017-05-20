@@ -17,7 +17,7 @@ public class Variant extends Model {
     public Integer group;
 
     @Column(name = "Factor")
-    public String factor;
+    public Double factor;
 
     @Column(name = "Unit")
     public Unit unit;
