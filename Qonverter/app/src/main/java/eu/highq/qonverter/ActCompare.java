@@ -1,18 +1,22 @@
 package eu.highq.qonverter;
 
 import android.app.LauncherActivity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.content.Intent;
+import android.util.Base64;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.EditText;
@@ -35,6 +39,7 @@ public class ActCompare extends AppCompatActivity {
 
     public TextView upperItem, lowerItem;
     public TextView upperItemCategory, lowerItemCategory;
+    public ImageView upperItemPictogram, lowerItemPictogram;
 
     public static final int REQUEST_CODE = 1;
 
@@ -65,6 +70,8 @@ public class ActCompare extends AppCompatActivity {
         lowerItem = (TextView) findViewById(R.id.txtItemLower);
         upperItemCategory = (TextView) findViewById(R.id.txtItemUpperCategory);
         lowerItemCategory = (TextView) findViewById(R.id.txtItemLowerCategory);
+        upperItemPictogram = (ImageView) findViewById(R.id.imageUpper);
+        lowerItemPictogram = (ImageView) findViewById(R.id.imageBelow);
 
         //OnClickListener for Items
         upperItem.setOnClickListener(itemUpperOnClick);
@@ -237,6 +244,13 @@ public class ActCompare extends AppCompatActivity {
             case 0:
                 // hier Oberfläche 1 updaten
                 upperItem.setText(item.carrier.name);
+                if (null != item.carrier.pictogram) {
+                    byte[] decodedString = Base64.decode(item.carrier.pictogram, Base64.DEFAULT);
+                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,decodedString.length);
+                    upperItemPictogram.setImageBitmap(decodedByte);
+                }
+
+
                 List<Variant> variants = item.carrier.variants();
 
                 LinearLayout layout = (LinearLayout) findViewById(R.id.layoutSpinnerUpper);
@@ -338,6 +352,11 @@ public class ActCompare extends AppCompatActivity {
                 lowerItem.setText(item.carrier.name);
                 lowerItemCategory.setText(item.carrier.category.name);
 
+                if (null != item.carrier.pictogram) {
+                    byte[] decodedString = Base64.decode(item.carrier.pictogram, Base64.DEFAULT);
+                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,decodedString.length);
+                    lowerItemPictogram.setImageBitmap(decodedByte);
+                }
                 variants = item.carrier.variants();
 
                 layout = (LinearLayout) findViewById(R.id.layoutSpinnerLower);
