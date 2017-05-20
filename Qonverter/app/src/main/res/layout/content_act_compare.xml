@@ -155,13 +155,6 @@
                         android:layout_weight="1"
                         app:srcCompat="@android:drawable/arrow_down_float" />
 
-                    <Spinner
-                        android:id="@+id/spinnerVarianteBelow"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                    </Spinner>
-
                     <LinearLayout
                         android:id="@+id/layoutSpinnerLower"
                         android:layout_width="match_parent"
