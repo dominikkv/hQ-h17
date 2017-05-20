@@ -568,14 +568,6 @@ public class EnergyCarrier extends Model {
         carrier.save();
 
         carrier = new EnergyCarrier();
-        carrier.name = "Durchschnittlicher Haushalt";
-        carrier.category = categoryHaushaltsgeraete;
-        carrier.energy = 1500;
-        carrier.unit = unitZeit;
-        carrier.description = "Energiebedarf";
-        carrier.save();
-
-        carrier = new EnergyCarrier();
         carrier.name = "E27 Glühlampe";
         carrier.category = categoryHaushaltsgeraete;
         carrier.energy = 215;
