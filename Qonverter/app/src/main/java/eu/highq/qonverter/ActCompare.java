@@ -46,6 +46,7 @@ public class ActCompare extends AppCompatActivity {
     public String lastVal1;
     public String lastVal2;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Main Activity
@@ -237,221 +238,132 @@ public class ActCompare extends AppCompatActivity {
     }
 
     private void displayItem(final CompareItem item, int index) {
-        TextView upperEnergyInfo = (TextView) findViewById(R.id.txtUpperEnergyInformation);
-        TextView lowerEnergyInfo = (TextView) findViewById(R.id.txtLowerEnergyInformation);
 
         switch (index) {
             case 0:
                 // hier Oberfläche 1 updaten
-                upperItem.setText(item.carrier.name);
-                if (null != item.carrier.pictogram) {
-                    byte[] decodedString = Base64.decode(item.carrier.pictogram, Base64.DEFAULT);
-                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,decodedString.length);
-                    upperItemPictogram.setImageBitmap(decodedByte);
-                }
-
-
-                List<Variant> variants = item.carrier.variants();
-
-                LinearLayout layout = (LinearLayout) findViewById(R.id.layoutSpinnerUpper);
-                layout.removeAllViews();
-
-                List<Integer> groups = new ArrayList<>();
-
-                for (Variant variant : variants) {
-                    if (!groups.contains(variant.variantGroup)) {
-                        groups.add(variant.variantGroup);
-                    }
-                }
-
-                item.variants.clear();
-
-                for (int groupID : groups) {
-                    Spinner spinner = new Spinner(this);
-                    layout.addView(spinner);
-
-                    List<String> variantNames = new ArrayList<>();
-
-                    for (Variant variant : variants) {
-                        if (groupID == variant.variantGroup) {
-                            if (variantNames.size() == 0) {
-                                item.variants.add(variant);
-                            }
-                            variantNames.add(variant.name);
-                        }
-                    }
-
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
-
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner.setAdapter(adapter);
-
-                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        /**
-                         * Called when a new item is selected (in the Spinner)
-                         */
-                        @Override
-                        public void onItemSelected(AdapterView parent, View view,
-                                                   int pos, long id) {
-                            // An spinnerItem was selected. You can retrieve the selected item using
-                            // parent.getItemAtPosition(pos)
-
-                            //Variant variant = new parent.getItemAtPosition(pos);
-                            //item.variants.add(variant);
-                            //updateItem(item,0);
-
-                        }
-
-                        public void onNothingSelected(AdapterView<?> parent) {
-                            // Do nothing, just another required interface callback
-                        }
-
-                    }); // (optional
-
-                }
-
-                upperItemCategory.setText(item.carrier.category.name);
-
-                TextView label = (TextView) findViewById(R.id.txtLabelUpper);
-                label.setText(item.carrier.unit.name);
-
-                List<UnitAbbreviation> abbrList = item.carrier.unit.abbreviations();
-
-                UnitAbbreviation a_big = abbrList.get(0);
-                UnitAbbreviation a_small = abbrList.get(0);
-
-                for (UnitAbbreviation a : abbrList) {
-                    double unitvalue = item.factor / a.factor;
-                    if ((unitvalue < 1) && (unitvalue > item.factor / a_big.factor)) {
-                        a_big = a;
-                    }
-                    if ((unitvalue > 1) && (unitvalue < item.factor / a_small.factor)) {
-                        a_small = a;
-                    }
-                }
-
-                UnitAbbreviation abbr;
-                if (item.factor / a_small.factor < 100) {
-                    abbr = a_small;
-                } else {
-                    abbr = a_big;
-                }
-
-                TextView unit = (TextView) findViewById(R.id.txtUnitUpper);
-                unit.setText(abbr.abbreviation);
-
-                EditText value = (EditText) findViewById(R.id.edtValueUpper);
-                value.setText(String.format("%.2f", (item.factor / abbr.factor)));
-
-                //Energy information
-                upperEnergyInfo.setText(item.carrier.name + " hat eine Energie von " + Long.toString(item.carrier.energy) + " Joule pro " + abbr.abbreviation);
-
+                update(item, R.id.txtUpperEnergyInformation, upperItem, upperItemCategory, upperItemPictogram, R.id.txtLabelUpper, R.id.txtUnitUpper, R.id.edtValueUpper, R.id.layoutSpinnerUpper, index);
                 break;
             case 1:
                 // hier Oberfläche 2 updaten
-                lowerItem.setText(item.carrier.name);
-                lowerItemCategory.setText(item.carrier.category.name);
-
-                if (null != item.carrier.pictogram) {
-                    byte[] decodedString = Base64.decode(item.carrier.pictogram, Base64.DEFAULT);
-                    Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,decodedString.length);
-                    lowerItemPictogram.setImageBitmap(decodedByte);
-                }
-                variants = item.carrier.variants();
-
-                layout = (LinearLayout) findViewById(R.id.layoutSpinnerLower);
-                layout.removeAllViews();
-
-                groups = new ArrayList<>();
-
-                for (Variant variant : variants) {
-                    if (!groups.contains(variant.variantGroup)) {
-                        groups.add(variant.variantGroup);
-                    }
-                }
-
-                item.variants.clear();
-
-                for (int groupID : groups) {
-                    Spinner spinner = new Spinner(this);
-                    layout.addView(spinner);
-
-                    List<String> variantNames = new ArrayList<>();
-
-                    for (Variant variant : variants) {
-                        if (groupID == variant.variantGroup) {
-                            if (variantNames.size() == 0) {
-                                item.variants.add(variant);
-                            }
-
-                            variantNames.add(variant.name);
-                        }
-                    }
-
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
-
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner.setAdapter(adapter);
-
-                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        /**
-                         * Called when a new item is selected (in the Spinner)
-                         */
-                        @Override
-                        public void onItemSelected(AdapterView parent, View view,
-                                                   int pos, long id) {
-                            // An spinnerItem was selected. You can retrieve the selected item using
-                            // parent.getItemAtPosition(pos)
-
-                            //Variant variant = new parent.getItemAtPosition(pos);
-                            //item.variants.add(variant);
-                            //updateItem(item,1);
-
-                        }
-
-                        public void onNothingSelected(AdapterView<?> parent) {
-                            // Do nothing, just another required interface callback
-                        }
-
-                    }); // (optional
-                }
-
-                label = (TextView) findViewById(R.id.txtLabelLower);
-                label.setText(item.carrier.unit.name);
-
-                abbrList = item.carrier.unit.abbreviations();
-
-                a_big = abbrList.get(0);
-                a_small = abbrList.get(0);
-
-                for (UnitAbbreviation a : abbrList) {
-                    double unitvalue = item.factor / a.factor;
-                    if ((unitvalue < 1) && (unitvalue > item.factor / a_big.factor)) {
-                        a_big = a;
-                    }
-                    if ((unitvalue > 1) && (unitvalue < item.factor / a_small.factor)) {
-                        a_small = a;
-                    }
-                }
-
-                if (item.factor / a_small.factor < 100) {
-                    abbr = a_small;
-                } else {
-                    abbr = a_big;
-                }
-
-                unit = (TextView) findViewById(R.id.txtUnitLower);
-                unit.setText(abbr.abbreviation);
-
-                value = (EditText) findViewById(R.id.edtValueLower);
-                value.setText(String.format("%.2f", (item.factor / abbr.factor)));
-
-                //Energy information
-                lowerEnergyInfo.setText(item.carrier.name + " hat eine Energie von " + Long.toString(item.carrier.energy) + " Joule pro " + abbr.abbreviation);
-
+                update(item, R.id.txtLowerEnergyInformation, lowerItem, lowerItemCategory, lowerItemPictogram, R.id.txtLabelLower, R.id.txtUnitLower, R.id.edtValueLower, R.id.layoutSpinnerLower, index);
                 break;
             default:
                 throw new IllegalArgumentException("Index out of bounds");
         }
+    }
+
+    private void update(final CompareItem item, Integer idTxtEnergyInfo, TextView CarrierName, TextView CarrierCategoryName, ImageView Pictogram, Integer idTxtLabel, Integer idTxtUnit, Integer idEdtValue, Integer idSpinner, final Integer index) {
+
+
+        CarrierName.setText(item.carrier.name);
+        if (null != item.carrier.pictogram) {
+            byte[] decodedString = Base64.decode(item.carrier.pictogram, Base64.DEFAULT);
+            Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,decodedString.length);
+            Pictogram.setImageBitmap(decodedByte);
+        } else {
+            Pictogram.setVisibility(View.INVISIBLE);
+        }
+
+
+        List<Variant> variants = item.carrier.variants();
+
+        LinearLayout layout = (LinearLayout) findViewById(idSpinner);
+        layout.removeAllViews();
+
+        List<Integer> groups = new ArrayList<>();
+
+        for (Variant variant : variants) {
+            if (!groups.contains(variant.variantGroup)) {
+                groups.add(variant.variantGroup);
+            }
+        }
+
+        item.variants.clear();
+
+        for (int groupID : groups) {
+            Spinner spinner = new Spinner(this);
+            layout.addView(spinner);
+
+            List<String> variantNames = new ArrayList<>();
+
+            for (Variant variant : variants) {
+                if (groupID == variant.variantGroup) {
+                    if (variantNames.size() == 0) {
+                        item.variants.add(variant);
+                    }
+                    variantNames.add(variant.name);
+                }
+            }
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
+
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+
+            final Boolean spinnerItemAlreadySelected = false;
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                /**
+                 * Called when a new item is selected (in the Spinner)
+                 */
+                @Override
+
+                public void onItemSelected(AdapterView parent, View view,
+                                           int pos, long id) {
+                    // An spinnerItem was selected. You can retrieve the selected item using
+                    // parent.getItemAtPosition(pos)
+
+
+                    //Variant variant = new parent.getItemAtPosition(pos);
+                    //item.variants.add(variant);
+                    //updateItem(item, index);
+
+                }
+
+                public void onNothingSelected(AdapterView<?> parent) {
+                    // Do nothing, just another required interface callback
+                }
+
+            }); // (optional
+
+        }
+
+        CarrierCategoryName.setText(item.carrier.category.name);
+
+        TextView label = (TextView) findViewById(idTxtLabel);
+        label.setText(item.carrier.unit.name);
+
+        List<UnitAbbreviation> abbrList = item.carrier.unit.abbreviations();
+
+        UnitAbbreviation a_big = abbrList.get(0);
+        UnitAbbreviation a_small = abbrList.get(0);
+
+        for (UnitAbbreviation a : abbrList) {
+            double unitvalue = item.factor / a.factor;
+            if ((unitvalue < 1) && (unitvalue > item.factor / a_big.factor)) {
+                a_big = a;
+            }
+            if ((unitvalue > 1) && (unitvalue < item.factor / a_small.factor)) {
+                a_small = a;
+            }
+        }
+
+        UnitAbbreviation abbr;
+        if (item.factor / a_small.factor < 100) {
+            abbr = a_small;
+        } else {
+            abbr = a_big;
+        }
+
+        TextView unit = (TextView) findViewById(idTxtUnit);
+        unit.setText(abbr.abbreviation);
+
+        EditText value = (EditText) findViewById(idEdtValue);
+        value.setText(String.format("%.2f", (item.factor / abbr.factor)));
+
+        //Energy information
+        // EnergyInfo.setText(item.carrier.name + " hat eine Energie von " + Long.toString(item.carrier.energy) + " Joule pro " + abbr.abbreviation);
+        TextView EnergyInfo = (TextView) findViewById(idTxtEnergyInfo);
+        EnergyInfo.setText("Energy: " + Long.toString(item.carrier.energy) + " kJ bei einer Stunde");
     }
 }

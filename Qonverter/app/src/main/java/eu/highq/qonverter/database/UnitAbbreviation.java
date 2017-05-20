@@ -66,6 +66,12 @@ public class UnitAbbreviation extends Model {
 
         unitAbbr = new UnitAbbreviation();
         unitAbbr.unit = unit;
+        unitAbbr.factor = 1.0 / (60 * 60 * 1000);
+        unitAbbr.abbreviation = "Millisekunden";
+        unitAbbr.save();
+
+        unitAbbr = new UnitAbbreviation();
+        unitAbbr.unit = unit;
         unitAbbr.factor = 1.0 / (60 * 60);
         unitAbbr.abbreviation = "Sekunden";
         unitAbbr.save();
