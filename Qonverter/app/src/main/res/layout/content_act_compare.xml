@@ -10,6 +10,9 @@
 
     <LinearLayout
         android:id="@+id/rootLayout"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:orientation="vertical"
         android:layout_height="fill_parent"
         android:layout_width="fill_parent">
@@ -87,7 +90,6 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:inputType="numberDecimal"
-                            android:imeOptions="actionGo"
                             android:layout_weight="1"/>
 
                         <TextView
@@ -153,7 +155,6 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:inputType="numberDecimal"
-                            android:imeOptions="actionGo"
                             android:layout_weight="1"/>
 
                         <TextView

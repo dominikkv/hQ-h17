@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -82,10 +83,16 @@ public class ActCompare extends AppCompatActivity {
                     if (other != null) {
                         updateItem(other, 1);
                     }
-                }
-                else {
+                } else {
                     ((EditText) view).setText("");
                 }
+            }
+        });
+        value.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+
+                return false;
             }
         });
 
