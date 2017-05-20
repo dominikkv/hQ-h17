@@ -2,6 +2,13 @@
     <string name="app_name">Qonverter</string>
     <string name="action_settings">Einstellungen</string>
     <string name="action_add">Kategorie hinzufügen</string>
+
+    <string name="popup_settings">Einstellungen</string>
+    <string name="popup_addcategory">Kategorie hinzufügen </string>
+
+    <string name="edit_category">Kategorie </string>
+    <string name="edit_unit">Einheit einstellen</string>
+    <string name="edit_color">Farbe einstellen</string>
     <string name="action_info">Über</string>
 
     <string name="title_activity_act_choose">Energieträger wählen</string>
