@@ -52,7 +52,7 @@ public class EnergyCarrier extends Model {
         carrier.save();
 
 
-//-----Lebensmittl
+//-----Lebensmittel
         carrier = new EnergyCarrier();
         carrier.name = "Getränke";
         carrier.category = categoryLebensmittel;
@@ -66,7 +66,7 @@ public class EnergyCarrier extends Model {
         carrier.category = categoryLebensmittel;
         carrier.energy = 6276;
         carrier.unit = unitGewicht;
-        carrier.description = "";
+        carrier.description = "Energiegehalt";
         carrier.save();
 
         carrier = new EnergyCarrier();
@@ -74,7 +74,7 @@ public class EnergyCarrier extends Model {
         carrier.category = categoryLebensmittel;
         carrier.energy = 2092;
         carrier.unit = unitGewicht;
-        carrier.description = "";
+        carrier.description = "Energiegehalt";
         carrier.save();
 
         carrier = new EnergyCarrier();
@@ -82,8 +82,131 @@ public class EnergyCarrier extends Model {
         carrier.category = categoryLebensmittel;
         carrier.energy = 3347;
         carrier.unit = unitGewicht;
-        carrier.description = "";
+        carrier.description = "Energiegehalt";
         carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Knabbereien";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 14644;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Soßen";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 3766;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fisch";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 4184;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fertiggerichte";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 10041;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Brotaufstrich";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 13808;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fette";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 37657;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Obst Durchschnitt";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 2092;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Grüner Salat";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 418;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Gemüse Durchschnitt";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 837;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Oliven";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 14644;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Wurst";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 5439;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Käse";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 10460;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fleisch";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 4184;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Kohlenhydratbeilagen";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 2929;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Brot";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 8368;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+
+
 
 //-----Kraftwerke
         carrier = new EnergyCarrier();
@@ -573,7 +696,7 @@ public class EnergyCarrier extends Model {
         carrier.save();
 
         carrier = new EnergyCarrier();
-        carrier.name = "HighendComputer";
+        carrier.name = "Highend Computer";
         carrier.category = categoryHaushaltsgeraete;
         carrier.energy = 719;
         carrier.unit = unitZeit;
