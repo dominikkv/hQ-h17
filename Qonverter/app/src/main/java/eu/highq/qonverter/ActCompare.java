@@ -10,7 +10,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import eu.highq.qonverter.database.EnergyCarrier;
+import eu.highq.qonverter.models.CompareItem;
+
 public class ActCompare extends AppCompatActivity {
+
+    private List<CompareItem> items = new ArrayList<>(2);
 
     public TextView upperItem, lowerItem;
 
@@ -41,8 +49,12 @@ public class ActCompare extends AppCompatActivity {
         upperItem.setOnClickListener(itemUpperOnClick);
         lowerItem.setOnClickListener(itemLowerOnClick);
 
-        //Shuffle entries at start of application
-        Shuffle();
+        setItem(generateRandomItem(), 0);
+        setItem(generateRandomItem(), 1);
+    }
+
+    private CompareItem generateRandomItem() {
+        return new CompareItem(new EnergyCarrier());
     }
 
     View.OnClickListener itemUpperOnClick = new View.OnClickListener() {
@@ -79,13 +91,38 @@ public class ActCompare extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //Shuffle items
-    private void Shuffle() {
-        //Database integration -> Select two random items
+    private void setItem(CompareItem item, int index) {
+        if ((index < 0) || (index >= this.items.size())) {
+            throw new IllegalArgumentException("Index out of bounds");
+        }
 
-        upperItem.setText(R.string.main_placeholder_item_upper);
-        lowerItem.setText(R.string.main_placeholder_item_lower);
+        this.items.set(index, item);
 
-        //Compare
+        updateItem(item, index);
+    }
+
+    private void updateItem(CompareItem item, int index) {
+        CompareItem compareWith = this.items.get(index == 0 ? 1 : 0);
+
+        if (compareWith != null) {
+            item.adjustFactor(compareWith.calculateEnergy());
+        }
+
+        displayItem(item, index);
+    }
+
+    private void displayItem(CompareItem item, int index) {
+        switch (index) {
+            case 0:
+                // hier Oberfläche 1 updaten
+                upperItem.setText(R.string.main_placeholder_item_upper);
+                break;
+            case 1:
+                // hier Oberfläche 2 updaten
+                lowerItem.setText(R.string.main_placeholder_item_lower);
+                break;
+            default:
+                throw new IllegalArgumentException("Index out of bounds");
+        }
     }
 }
