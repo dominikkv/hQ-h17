@@ -183,7 +183,7 @@ public class ActCompare extends AppCompatActivity {
         }
     }
 
-    @Override
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_act_compare, menu);
@@ -205,7 +205,7 @@ public class ActCompare extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
+        */
     private void setItem(CompareItem item, int index) {
         if ((index < 0) || (index >= this.items.size())) {
             throw new IllegalArgumentException("Index out of bounds");
