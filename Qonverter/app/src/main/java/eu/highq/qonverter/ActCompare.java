@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -62,14 +63,18 @@ public class ActCompare extends AppCompatActivity {
     }
 
     View.OnClickListener itemUpperOnClick = new View.OnClickListener() {
-        public void onClick(View v) {
-            Snackbar.make(v, "Upper item clicked", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+        public void onClick(View view) {
+            Intent ItemSelectionIntent = new Intent(view.getContext(), ItemSelectionActivity.class);
+            ItemSelectionIntent.putExtra("item", "1");
+            view.getContext().startActivity(ItemSelectionIntent);
         }
     };
 
     View.OnClickListener itemLowerOnClick = new View.OnClickListener() {
-        public void onClick(View v) {
-            Snackbar.make(v, "Lower item clicked", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+        public void onClick(View view) {
+            Intent ItemSelectionIntent = new Intent(view.getContext(), ItemSelectionActivity.class);
+            ItemSelectionIntent.putExtra("item", "2");
+            view.getContext().startActivity(ItemSelectionIntent);
         }
     };
 
