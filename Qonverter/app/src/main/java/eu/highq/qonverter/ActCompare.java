@@ -36,6 +36,9 @@ public class ActCompare extends AppCompatActivity {
 
     public static final int REQUEST_CODE = 1;
 
+    public String lastVal1;
+    public String lastVal2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Main Activity
@@ -66,19 +69,25 @@ public class ActCompare extends AppCompatActivity {
         lowerItem.setOnClickListener(itemLowerOnClick);
 
         EditText value = (EditText) findViewById(R.id.edtValueUpper);
+        final EditText finalValue = value;
         value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFokus) {
                 if (!hasFokus) {
                     CompareItem item = items.get(0);
-                    double value = Double.parseDouble(((EditText) view).getText().toString());
-
-                    item.factor = value;
+                    try {
+                        double value = Double.parseDouble(((EditText) view).getText().toString());
+                    } catch (Exception E) {
+                        ((EditText) view).setText(lastVal1);
+                    }
+                    String commata = ((EditText) view).getText().toString();
+                    item.factor = Double.parseDouble(commata.replace(",", "."));
                     CompareItem other = getOther(0);
                     if (other != null) {
                         updateItem(other, 1);
                     }
                 } else {
+                    lastVal1 = ((EditText) view).getText().toString();
                     ((EditText) view).setText("");
                 }
             }
@@ -97,13 +106,21 @@ public class ActCompare extends AppCompatActivity {
             public void onFocusChange(View view, boolean hasFokus) {
                 if (!hasFokus) {
                     CompareItem item = items.get(1);
-                    double value = Double.parseDouble(((EditText) view).getText().toString());
-                    item.factor = value;
+
+                    try {
+                        double value = Double.parseDouble(((EditText) view).getText().toString());
+                    } catch (Exception E) {
+                        ((EditText) view).setText(lastVal2);
+                    }
+                    String commata = ((EditText) view).getText().toString();
+                    item.factor = Double.parseDouble(commata.replace(",", "."));
+
                     CompareItem other = getOther(1);
                     if (other != null) {
                         updateItem(other, 0);
                     }
                 } else {
+                    lastVal2 = ((EditText) view).getText().toString();
                     ((EditText) view).setText("");
                 }
             }
