@@ -66,13 +66,169 @@ public class EnergyCarrier extends Model {
         carrier.description = "Wie lange muss das Kraftwerk laufen?";
         carrier.save();
 
+//------BEWEGUNG
         carrier = new EnergyCarrier();
-        carrier.name = "Fahrrad fahren";
+        carrier.name = "Radfahren";
         carrier.category = categoryBewegung;
-        carrier.energy = 12345;
-        carrier.unit = unitStrecke;
-        carrier.description = "Wie weit muss man mit dem Rad fahren?";
+        carrier.energy = 1087;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie bei ca. 8-12 km/h";
         carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Volleyball";
+        carrier.category = categoryBewegung;
+        carrier.energy = 836;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Wandern";
+        carrier.category = categoryBewegung;
+        carrier.energy = 1338;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie (eben bis hüglig)";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Krafttraining";
+        carrier.category = categoryBewegung;
+        carrier.energy = 1673;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Skiabfahrt";
+        carrier.category = categoryBewegung;
+        carrier.energy = 1736;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Tennis";
+        carrier.category = categoryBewegung;
+        carrier.energy = 1841;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Schwimmen (Brust oder Kraul)";
+        carrier.category = categoryBewegung;
+        carrier.energy = 2008;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie (mittleres Tempo)";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Skilanglauf";
+        carrier.category = categoryBewegung;
+        carrier.energy = 2008;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie (mittleres Tempo)";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fußball";
+        carrier.category = categoryBewegung;
+        carrier.energy = 2343;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Handball";
+        carrier.category = categoryBewegung;
+        carrier.energy = 2343;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Walking";
+        carrier.category = categoryBewegung;
+        carrier.energy = 2343;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Schwimmen (Brust oder Kraul)";
+        carrier.category = categoryBewegung;
+        carrier.energy = 2677;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie (hohes Tempo)";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Skilanglauf";
+        carrier.category = categoryBewegung;
+        carrier.energy = 4686;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie (hügelig hohes Tempo)";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Jogging";
+        carrier.category = categoryBewegung;
+        carrier.energy = 3514;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie (12 km/h)";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Schlafen";
+        carrier.category = categoryBewegung;
+        carrier.energy = 215;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Liegen";
+        carrier.category = categoryBewegung;
+        carrier.energy = 341;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Stehen";
+        carrier.category = categoryBewegung;
+        carrier.energy = 503;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Gehen";
+        carrier.category = categoryBewegung;
+        carrier.energy = 1079;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie (Mittelwert)";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "100m Lauf";
+        carrier.category = categoryBewegung;
+        carrier.energy = 7446;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie (36 km/h)";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Marathonlauf";
+        carrier.category = categoryBewegung;
+        carrier.energy = 4244;
+        carrier.unit = unitZeit;
+        carrier.description = "benötigte Energie (19,5 km/h)";
+        carrier.save();
+
+//------BRENNSTOFFE
+
 
         carrier = new EnergyCarrier();
         carrier.name = "Wasserstoff";
