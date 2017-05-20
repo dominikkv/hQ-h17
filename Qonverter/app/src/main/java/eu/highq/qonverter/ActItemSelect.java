@@ -1,5 +1,6 @@
 package eu.highq.qonverter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
@@ -12,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.activeandroid.query.Select;
 
@@ -42,7 +44,7 @@ public class ActItemSelect extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         final Intent intent = getIntent();
-        String value = intent.getStringExtra("item");
+        final String value = intent.getStringExtra("item");
 
         //List stuff
 
@@ -85,9 +87,10 @@ public class ActItemSelect extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Object listItem = listView.getItemAtPosition(position);
-                Intent ItemSelectionIntent = new Intent(view.getContext(), ActItemSelect.class);
-                ItemSelectionIntent.putExtra(listItem.toString(), "1");
-                setResult(RESULT_OK,intent);
+                Intent ItemSelectionIntent = new Intent(view.getContext(), ActCompare.class);
+                ItemSelectionIntent.putExtra("upperOrLower", value);
+                ItemSelectionIntent.putExtra("item", listItem.toString());
+                setResult(RESULT_OK, ItemSelectionIntent);
                 finish();
             }
         });

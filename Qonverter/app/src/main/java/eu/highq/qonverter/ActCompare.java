@@ -142,8 +142,7 @@ public class ActCompare extends AppCompatActivity {
         public void onClick(View view) {
             Intent ItemSelectionIntent = new Intent(view.getContext(), ActItemSelect.class);
             ItemSelectionIntent.putExtra("item", "1");
-            ItemSelectionIntent.setAction(ItemSelectionIntent.ACTION_ANSWER);
-            //view.getContext().startActivity(ItemSelectionIntent);
+            //ItemSelectionIntent.setAction(ItemSelectionIntent.ACTION_ANSWER);
             ActCompare.this.startActivityForResult(ItemSelectionIntent, RESULT_OK);
         }
     };
@@ -152,14 +151,23 @@ public class ActCompare extends AppCompatActivity {
         public void onClick(View view) {
             Intent ItemSelectionIntent = new Intent(view.getContext(), ActItemSelect.class);
             ItemSelectionIntent.putExtra("item", "2");
-            view.getContext().startActivity(ItemSelectionIntent);
+            ActCompare.this.startActivityForResult(ItemSelectionIntent, RESULT_OK);
         }
     };
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String test =  data.getStringExtra("item");
+        Toast.makeText(this, "called", Toast.LENGTH_SHORT);
+        Toast.makeText(this, data.getExtras().getString("item"), Toast.LENGTH_LONG).show();
     }
+
+    /*@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Bundle result = getIntent().getExtras();
+        String upperOrLower = result.getString("upperOrLower");
+        String item = result.getString("item");
+        Toast.makeText(this, upperOrLower + ", " + item, Toast.LENGTH_LONG).show();
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
