@@ -145,8 +145,6 @@ public class ActCompare extends AppCompatActivity {
 
         setItem(firstItem, 0);
         setItem(secondItem, 1);
-
-        Toast.makeText(ActCompare.this, Long.toString(firstItem.carrier.energy), Toast.LENGTH_LONG).show();
     }
 
     private CompareItem getOther(int index) {
@@ -233,6 +231,9 @@ public class ActCompare extends AppCompatActivity {
     }
 
     private void displayItem(CompareItem item, int index) {
+        TextView upperEnergyInfo = (TextView) findViewById(R.id.txtUpperEnergyInformation);
+        TextView lowerEnergyInfo = (TextView) findViewById(R.id.txtLowerEnergyInformation);
+
         switch (index) {
             case 0:
                 // hier Oberfläche 1 updaten
@@ -306,6 +307,9 @@ public class ActCompare extends AppCompatActivity {
                 EditText value = (EditText) findViewById(R.id.edtValueUpper);
                 value.setText(String.format("%.2f", (item.factor / abbr.factor)));
 
+                //Energy information
+                upperEnergyInfo.setText(item.carrier.name + " hat eine Energie von " + Long.toString(item.carrier.energy) + " Joule pro " + abbr.abbreviation);
+
                 break;
             case 1:
                 // hier Oberfläche 2 updaten
@@ -378,6 +382,9 @@ public class ActCompare extends AppCompatActivity {
 
                 value = (EditText) findViewById(R.id.edtValueLower);
                 value.setText(String.format("%.2f", (item.factor / abbr.factor)));
+
+                //Energy information
+                lowerEnergyInfo.setText(item.carrier.name + " hat eine Energie von " + Long.toString(item.carrier.energy) + " Joule pro " + abbr.abbreviation);
 
                 break;
             default:
