@@ -57,7 +57,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ItemSelectionActivity"
+            android:name=".ActItemSelect"
             android:label="@string/title_activity_item_selection"
             android:parentActivityName=".ActCompare"
             android:theme="@style/AppTheme.NoActionBar">

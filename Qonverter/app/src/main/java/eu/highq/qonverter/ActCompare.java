@@ -64,7 +64,7 @@ public class ActCompare extends AppCompatActivity {
 
     View.OnClickListener itemUpperOnClick = new View.OnClickListener() {
         public void onClick(View view) {
-            Intent ItemSelectionIntent = new Intent(view.getContext(), ItemSelectionActivity.class);
+            Intent ItemSelectionIntent = new Intent(view.getContext(), ActItemSelect.class);
             ItemSelectionIntent.putExtra("item", "1");
             view.getContext().startActivity(ItemSelectionIntent);
         }
@@ -72,7 +72,7 @@ public class ActCompare extends AppCompatActivity {
 
     View.OnClickListener itemLowerOnClick = new View.OnClickListener() {
         public void onClick(View view) {
-            Intent ItemSelectionIntent = new Intent(view.getContext(), ItemSelectionActivity.class);
+            Intent ItemSelectionIntent = new Intent(view.getContext(), ActItemSelect.class);
             ItemSelectionIntent.putExtra("item", "2");
             view.getContext().startActivity(ItemSelectionIntent);
         }

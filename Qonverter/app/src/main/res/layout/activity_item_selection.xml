@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="eu.highq.qonverter.ItemSelectionActivity">
+    tools:context="eu.highq.qonverter.ActItemSelect">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

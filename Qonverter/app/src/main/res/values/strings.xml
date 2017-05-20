@@ -27,6 +27,7 @@
     <!-- Item Selection -->
 
     <string name="item_selection_toolbar_title">Wählen Sie ein Item aus...</string>
+    <string name="item_selection_searchbar_hint">Einträge durchsuchen...</string>
 
     <!-- Item Selection End -->
 

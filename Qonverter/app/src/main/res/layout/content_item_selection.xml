@@ -5,26 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="eu.highq.qonverter.ItemSelectionActivity"
+    tools:context="eu.highq.qonverter.ActItemSelect"
     tools:showIn="@layout/activity_item_selection">
 
     <LinearLayout
         android:id="@+id/layoutItemSelection"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:paddingTop="6dp"
         android:paddingBottom="6dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp" >
 
-        <ListView
-            android:id="@+id/listViewItemSelection"
+        <!-- Editext for Search -->
+        <EditText android:id="@+id/item_search"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1" >
+            android:layout_height="wrap_content"
+            android:hint="@string/item_selection_searchbar_hint"
+            android:inputType="text" />
 
-        </ListView>
+        <!-- List View -->
+        <ListView
+            android:id="@+id/item_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
-public class ItemSelectionActivity extends AppCompatActivity {
+public class ActItemSelect extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
