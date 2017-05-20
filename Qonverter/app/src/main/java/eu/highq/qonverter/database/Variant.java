@@ -134,5 +134,35 @@ public class Variant extends Model {
         variant.factor = 5.49;
         variant.save();
 
+        carrier = new Select().from(EnergyCarrier.class).where("Name = ?", "Getränke").executeSingle();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Bier";
+        variant.variantGroup = 1;
+        variant.factor = 1.0;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Rotwein";
+        variant.variantGroup = 1;
+        variant.factor = 1.98;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Wodka";
+        variant.variantGroup = 1;
+        variant.factor = 5.37;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Cola";
+        variant.variantGroup = 1;
+        variant.factor = 0.98;
+        variant.save();
+
     }
 }

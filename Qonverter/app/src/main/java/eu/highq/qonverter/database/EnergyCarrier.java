@@ -51,12 +51,14 @@ public class EnergyCarrier extends Model {
         carrier.description = "Wie weit kommt man mit dem Auto, Liter";
         carrier.save();
 
+
+//-----Lebensmittl
         carrier = new EnergyCarrier();
-        carrier.name = "Bier";
+        carrier.name = "Getränke";
         carrier.category = categoryLebensmittel;
-        carrier.energy = 12345;
+        carrier.energy = 1800;
         carrier.unit = unitVolumen;
-        carrier.description = "Energiegehalt Bier";
+        carrier.description = "Energiegehalt verschiedener Getränke";
         carrier.save();
 
 //-----Kraftwerke
