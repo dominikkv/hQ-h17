@@ -28,6 +28,7 @@ public class ActCompare extends AppCompatActivity {
     private List<CompareItem> items = new ArrayList<>(2);
 
     public TextView upperItem, lowerItem;
+    public TextView upperItemCategory, lowerItemCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +52,8 @@ public class ActCompare extends AppCompatActivity {
 
         upperItem = (TextView) findViewById(R.id.txtItemUpper);
         lowerItem = (TextView) findViewById(R.id.txtItemLower);
+        upperItemCategory = (TextView) findViewById(R.id.txtItemUpperCategory);
+        lowerItemCategory = (TextView) findViewById(R.id.txtItemLowerCategory);
 
         //OnClickListener for Items
         upperItem.setOnClickListener(itemUpperOnClick);
@@ -151,11 +154,13 @@ public class ActCompare extends AppCompatActivity {
         switch (index) {
             case 0:
                 // hier Oberfläche 1 updaten
-                upperItem.setText(R.string.main_placeholder_item_upper);
+                upperItem.setText(item.carrier.name);
+                upperItemCategory.setText(item.carrier.category.name);
                 break;
             case 1:
                 // hier Oberfläche 2 updaten
-                lowerItem.setText(R.string.main_placeholder_item_lower);
+                lowerItem.setText(item.carrier.name);
+                lowerItemCategory.setText(item.carrier.category.name);
                 break;
             default:
                 throw new IllegalArgumentException("Index out of bounds");

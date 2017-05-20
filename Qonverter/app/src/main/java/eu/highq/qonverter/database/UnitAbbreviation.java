@@ -17,6 +17,8 @@ public class UnitAbbreviation extends Model {
     @Column(name = "Abbreviation")
     public String abbreviation;
 
+
+
     public static void prePopulate() {
         Unit unit = new Select().from(Unit.class).where("Name = ?", "Gewicht").executeSingle();
 
