@@ -175,19 +175,16 @@ public class ActCompare extends AppCompatActivity {
                 catch (Exception ex) {
                     Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
                 }
-
-
-
-                //ArrayAdapter<String> adapter_conv = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, item.carrier.variants().toString());
-                //String[] variantArray = new String[item.carrier.variants().size()];
-
-                /*for (int i = 0; i < variantArray.length - 1; i++) {
-                    variantArray[i] = item.carrier.variants().get(i).name;
+                
+                List<String> variantNames = new ArrayList<String>();
+                for (Variant v : variants) {
+                    variantNames.add(v.name);
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantArray);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
+
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                spinnerVariante.setAdapter(adapter);*/
+                spinnerVariante.setAdapter(adapter);
 
                 upperItemCategory.setText(item.carrier.category.name);
 
