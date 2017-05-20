@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -19,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import eu.highq.qonverter.database.EnergyCarrier;
+
+import static android.R.id.list;
 
 public class ActItemSelect extends AppCompatActivity {
 
@@ -37,7 +41,7 @@ public class ActItemSelect extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         String value = intent.getStringExtra("item");
 
         //List stuff
@@ -74,6 +78,17 @@ public class ActItemSelect extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object listItem = listView.getItemAtPosition(position);
+                Intent ItemSelectionIntent = new Intent(view.getContext(), ActItemSelect.class);
+                ItemSelectionIntent.putExtra(listItem.toString(), "1");
+                setResult(RESULT_OK,intent);
+                finish();
             }
         });
     }
