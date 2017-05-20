@@ -76,6 +76,14 @@ public class EnergyCarrier extends Model {
         carrier.description = "Wie lange muss das Kraftwerk bei Maximalleistung laufen?";
         carrier.save();
 
+        carrier = new EnergyCarrier();
+        carrier.name = "Wasserkraftwerk";
+        carrier.category = categoryKraftwerk;
+        carrier.energy = 14748201439l;
+        carrier.unit = unitZeit;
+        carrier.description = "Wie lange muss das Kraftwerk bei Maximalleistung laufen?";
+        carrier.save();
+
 //------BEWEGUNG
         carrier = new EnergyCarrier();
         carrier.name = "Radfahren";

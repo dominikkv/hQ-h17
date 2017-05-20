@@ -110,5 +110,29 @@ public class Variant extends Model {
         variant.variantGroup = 1;
         variant.factor = 130.0;
         variant.save();
+
+        carrier = new Select().from(EnergyCarrier.class).where("Name = ?", "Wasserkraftwerk").executeSingle();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Deutschland Gesamt";
+        variant.variantGroup = 1;
+        variant.factor = 1.0;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Schluchsee";
+        variant.variantGroup = 1;
+        variant.factor = 0.115;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Drei-Schluchten-Damm";
+        variant.variantGroup = 1;
+        variant.factor = 5.49;
+        variant.save();
+
     }
 }
