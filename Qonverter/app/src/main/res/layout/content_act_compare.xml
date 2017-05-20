@@ -31,21 +31,45 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent" >
 
-                <TextView
-                    android:id="@+id/txtItemUpper"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:contentDescription="@string/main_view_upper_item_content_description"
-                    android:maxLines="1"
-                    android:text="@string/main_placeholder_item_upper"
-                    android:textAlignment="textStart"
-                    android:textColor="@android:color/holo_green_light"
-                    android:textIsSelectable="false"
-                    android:textSize="42sp"
-                    android:textStyle="bold"
-                    android:visibility="visible"
-                    android:typeface="normal" />
+                <LinearLayout
+                    android:id="@+id/linearLayoutUpper"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/txtItemUpper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:contentDescription="@string/main_view_upper_item_content_description"
+                        android:maxLines="1"
+                        android:text="@string/main_placeholder_item_upper"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/holo_green_light"
+                        android:textIsSelectable="false"
+                        android:textSize="42sp"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        android:typeface="normal" />
+
+                    <TextView
+                        android:id="@+id/txtItemUpperCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:contentDescription="@string/main_view_upper_item_content_description"
+                        android:maxLines="1"
+                        android:text="@string/main_placeholder_item_upper"
+                        android:textAlignment="textStart"
+                        android:textColor="@android:color/holo_green_light"
+                        android:textIsSelectable="false"
+                        android:textSize="16sp"
+                        android:textStyle="normal"
+                        android:visibility="visible"
+                        android:typeface="normal" />
+
+                </LinearLayout>
 
             </RelativeLayout>
 
@@ -63,10 +87,6 @@
             android:paddingRight="10dp"
             android:background="@color/colorMainLower" >
 
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
         </LinearLayout>
 
         <LinearLayout
@@ -86,22 +106,47 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
-                <TextView
-                    android:id="@+id/txtItemLower"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentBottom="true"
-                    android:contentDescription="@string/main_view_lower_item_content_description"
-                    android:maxLines="1"
-                    android:text="@string/main_placeholder_item_lower"
-                    android:textAlignment="textEnd"
-                    android:textColor="@android:color/holo_red_light"
-                    android:textIsSelectable="false"
-                    android:textSize="42sp"
-                    android:textStyle="bold"
-                    android:visibility="visible"
-                    android:typeface="normal" />
+                <LinearLayout
+                    android:id="@+id/linearLayoutLower"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="bottom|right">
+
+                    <TextView
+                        android:id="@+id/txtItemLowerCategory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:contentDescription="@string/main_view_upper_item_content_description"
+                        android:maxLines="1"
+                        android:text="@string/main_placeholder_item_upper"
+                        android:textAlignment="textEnd"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textIsSelectable="false"
+                        android:textSize="16sp"
+                        android:textStyle="normal"
+                        android:visibility="visible"
+                        android:typeface="normal" />
+
+                    <TextView
+                        android:id="@+id/txtItemLower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:contentDescription="@string/main_view_lower_item_content_description"
+                        android:maxLines="1"
+                        android:text="@string/main_placeholder_item_lower"
+                        android:textAlignment="textEnd"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textIsSelectable="false"
+                        android:textSize="42sp"
+                        android:textStyle="bold"
+                        android:visibility="visible"
+                        android:typeface="normal" />
+
+                </LinearLayout>
 
             </RelativeLayout>
 

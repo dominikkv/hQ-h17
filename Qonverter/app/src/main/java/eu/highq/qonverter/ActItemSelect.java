@@ -7,11 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,9 +46,9 @@ public class ActItemSelect extends AppCompatActivity {
         ArrayList<HashMap<String, String>> itemList;
 
         // Listview Data
-        String items[] = {"Dell Inspiron", "HTC One X", "HTC Wildfire S", "HTC Sense", "HTC Sensation XE",
+        String items[] = { "Dell Inspiron", "HTC One X", "HTC Wildfire S", "HTC Sense", "HTC Sensation XE",
                 "iPhone 4S", "Samsung Galaxy Note 800",
-                "Samsung Galaxy S3", "MacBook Air", "Mac Mini", "MacBook Pro", "One Plus 3", "One Plus 3T"};
+                "Samsung Galaxy S3", "MacBook Air", "Mac Mini", "MacBook Pro", "One Plus 3", "One Plus 3T" };
 
         listView = (ListView) findViewById(R.id.item_list_view);
         itemSearch = (EditText) findViewById(R.id.item_search);
@@ -69,12 +67,11 @@ public class ActItemSelect extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                //ActItemSelect.this.adapter.getFilter().filter(charSequence);
+                ActItemSelect.this.adapter.getFilter().filter(charSequence);
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                ActItemSelect.this.adapter.getFilter().filter(editable);
             }
         });
     }
