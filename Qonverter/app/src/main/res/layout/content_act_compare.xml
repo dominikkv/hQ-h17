@@ -57,10 +57,16 @@
             android:layout_weight="1"
             android:layout_height="fill_parent"
             android:layout_width="fill_parent"
-            android:padding="5dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:background="@color/colorMainLower" >
 
 
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
 
         <LinearLayout
@@ -69,7 +75,10 @@
             android:layout_weight="1"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:padding="5dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:background="@color/colorMainResult">
             
             <RelativeLayout
