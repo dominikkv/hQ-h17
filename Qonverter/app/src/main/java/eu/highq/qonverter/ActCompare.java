@@ -9,10 +9,14 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.activeandroid.query.Select;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +33,8 @@ public class ActCompare extends AppCompatActivity {
 
     public TextView upperItem, lowerItem;
     public TextView upperItemCategory, lowerItemCategory;
+
+    public Spinner spinnerVariante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +60,7 @@ public class ActCompare extends AppCompatActivity {
         lowerItem = (TextView) findViewById(R.id.txtItemLower);
         upperItemCategory = (TextView) findViewById(R.id.txtItemUpperCategory);
         lowerItemCategory = (TextView) findViewById(R.id.txtItemLowerCategory);
+        spinnerVariante = (Spinner) findViewById(R.id.spinnerVariante);
 
         //OnClickListener for Items
         upperItem.setOnClickListener(itemUpperOnClick);
@@ -155,12 +162,35 @@ public class ActCompare extends AppCompatActivity {
             case 0:
                 // hier Oberfläche 1 updaten
                 upperItem.setText(item.carrier.name);
-                upperItemCategory.setText(item.carrier.category.name);
+
+                //Toast.makeText(this, item.carrier.variants().size(), Toast.LENGTH_LONG).show();
+
+                List<Variant> variants = item.carrier.variants();
+
+                try {
+                    Toast.makeText(this, variants.size(), Toast.LENGTH_LONG).show();
+                }
+                catch (Exception ex) {
+                    Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
+                }
+
+
+
+                //ArrayAdapter<String> adapter_conv = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, item.carrier.variants().toString());
+                //String[] variantArray = new String[item.carrier.variants().size()];
+
+                /*for (int i = 0; i < variantArray.length - 1; i++) {
+                    variantArray[i] = item.carrier.variants().get(i).name;
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantArray);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinnerVariante.setAdapter(adapter);*/
+
                 break;
             case 1:
                 // hier Oberfläche 2 updaten
                 lowerItem.setText(item.carrier.name);
-                lowerItemCategory.setText(item.carrier.category.name);
                 break;
             default:
                 throw new IllegalArgumentException("Index out of bounds");
