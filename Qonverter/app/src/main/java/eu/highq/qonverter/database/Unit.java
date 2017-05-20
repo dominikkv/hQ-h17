@@ -32,5 +32,9 @@ public class Unit extends Model {
         unit = new Unit();
         unit.name = "Volumen";
         unit.save();
+
+        unit = new Unit();
+        unit.name = "Anzahl";
+        unit.save();
     }
 }

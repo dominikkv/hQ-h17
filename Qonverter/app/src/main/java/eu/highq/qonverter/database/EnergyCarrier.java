@@ -34,6 +34,7 @@ public class EnergyCarrier extends Model {
         Unit unitZeit = new Select().from(Unit.class).where("Name = ?", "Zeit").executeSingle();
         Unit unitGewicht = new Select().from(Unit.class).where("Name = ?", "Gewicht").executeSingle();
         Unit unitVolumen = new Select().from(Unit.class).where("Name = ?", "Volumen").executeSingle();
+        Unit unitAnzahl = new Select().from(Unit.class).where("Name = ?", "Anzahl").executeSingle();
 
         Category categoryTransport = new Select().from(Category.class).where("Name = ?", "Transportmittel").executeSingle();
         Category categoryLebensmittel = new Select().from(Category.class).where("Name = ?", "Lebensmittel").executeSingle();
@@ -50,20 +51,47 @@ public class EnergyCarrier extends Model {
         carrier.description = "Wie weit kommt man mit dem Auto, Liter";
         carrier.save();
 
+
+//-----Lebensmittl
         carrier = new EnergyCarrier();
-        carrier.name = "Bier";
+        carrier.name = "Getränke";
         carrier.category = categoryLebensmittel;
-        carrier.energy = 12345;
+        carrier.energy = 1800;
         carrier.unit = unitVolumen;
-        carrier.description = "Energiegehalt Bier";
+        carrier.description = "Energiegehalt verschiedener Getränke";
         carrier.save();
 
+//-----Kraftwerke
         carrier = new EnergyCarrier();
         carrier.name = "Atomkraftwerk";
         carrier.category = categoryKraftwerk;
-        carrier.energy = 12345;
+        carrier.energy = 6330935252l;
         carrier.unit = unitZeit;
         carrier.description = "Wie lange muss das Kraftwerk laufen?";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Windanlage";
+        carrier.category = categoryKraftwerk;
+        carrier.energy = 13420863309l;
+        carrier.unit = unitZeit;
+        carrier.description = "Wie lange muss das Kraftwerk bei Maximalleistung laufen?";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Wasserkraftwerk";
+        carrier.category = categoryKraftwerk;
+        carrier.energy = 14748201439l;
+        carrier.unit = unitZeit;
+        carrier.description = "Wie lange muss das Kraftwerk bei Maximalleistung laufen?";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Photovoltaik";
+        carrier.category = categoryKraftwerk;
+        carrier.energy = 15891395683l;
+        carrier.unit = unitZeit;
+        carrier.description = "Mussten alle Photovoltaik-Anlagen in Deutschland 2016 dafür arbeiten";
         carrier.save();
 
 //------BEWEGUNG
@@ -592,5 +620,20 @@ public class EnergyCarrier extends Model {
         carrier.description = "Energiebedarf";
         carrier.save();
 
+        carrier = new EnergyCarrier();
+        carrier.name = "Handy Durchschnitt";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 5;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Standby Durchschnitt";
+        carrier.category = categoryHaushaltsgeraete;
+        carrier.energy = 20;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiebedarf";
+        carrier.save();
     }
 }

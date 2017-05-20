@@ -57,14 +57,112 @@ public class Variant extends Model {
         variant.carrier = carrier;
         variant.name = "Fessenheim";
         variant.variantGroup = 1;
-        variant.factor = 1.1;
+        variant.factor = 1.0;
         variant.save();
 
         variant = new Variant();
         variant.carrier = carrier;
-        variant.name = "Philippsburg";
+        variant.name = "ISAR-2";
         variant.variantGroup = 1;
-        variant.factor = 1.2;
+        variant.factor = 0.80;
         variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Tschernobyl";
+        variant.variantGroup = 1;
+        variant.factor = 2.0;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Fukushima";
+        variant.variantGroup = 1;
+        variant.factor = 2.58;
+        variant.save();
+
+        carrier = new Select().from(EnergyCarrier.class).where("Name = ?", "Windanlage").executeSingle();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Deutschland Gesamt";
+        variant.variantGroup = 1;
+        variant.factor = 1.0;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Windpark Freiamt";
+        variant.variantGroup = 1;
+        variant.factor = 0.0025;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Windpark Roßkopf";
+        variant.variantGroup = 1;
+        variant.factor = 0.0019;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Weltweit";
+        variant.variantGroup = 1;
+        variant.factor = 130.0;
+        variant.save();
+
+        carrier = new Select().from(EnergyCarrier.class).where("Name = ?", "Wasserkraftwerk").executeSingle();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Deutschland Gesamt";
+        variant.variantGroup = 1;
+        variant.factor = 1.0;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Schluchsee";
+        variant.variantGroup = 1;
+        variant.factor = 0.115;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Drei-Schluchten-Damm";
+        variant.variantGroup = 1;
+        variant.factor = 5.49;
+        variant.save();
+
+        carrier = new Select().from(EnergyCarrier.class).where("Name = ?", "Getränke").executeSingle();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Bier";
+        variant.variantGroup = 1;
+        variant.factor = 1.0;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Rotwein";
+        variant.variantGroup = 1;
+        variant.factor = 1.98;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Wodka";
+        variant.variantGroup = 1;
+        variant.factor = 5.37;
+        variant.save();
+
+        variant = new Variant();
+        variant.carrier = carrier;
+        variant.name = "Cola";
+        variant.variantGroup = 1;
+        variant.factor = 0.98;
+        variant.save();
+
     }
 }

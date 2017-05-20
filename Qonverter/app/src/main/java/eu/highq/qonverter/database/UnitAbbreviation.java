@@ -99,5 +99,14 @@ public class UnitAbbreviation extends Model {
         unitAbbr.factor = 24.0 * 365;
         unitAbbr.abbreviation = "Jahre";
         unitAbbr.save();
+
+        unit = new Select().from(Unit.class).where("Name = ?", "Anzahl").executeSingle();
+
+        unitAbbr = new UnitAbbreviation();
+        unitAbbr.unit = unit;
+        unitAbbr.factor = 1.0;
+        unitAbbr.abbreviation = "mal";
+        unitAbbr.save();
+
     }
 }
