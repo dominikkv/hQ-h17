@@ -1,5 +1,6 @@
 package eu.highq.qonverter;
 
+import android.app.LauncherActivity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,10 +11,12 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.EditText;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.activeandroid.query.Select;
@@ -226,7 +229,7 @@ public class ActCompare extends AppCompatActivity {
         displayItem(item, index);
     }
 
-    private void displayItem(CompareItem item, int index) {
+    private void displayItem(final CompareItem item, int index) {
         TextView upperEnergyInfo = (TextView) findViewById(R.id.txtUpperEnergyInformation);
         TextView lowerEnergyInfo = (TextView) findViewById(R.id.txtLowerEnergyInformation);
 
@@ -268,6 +271,29 @@ public class ActCompare extends AppCompatActivity {
 
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner.setAdapter(adapter);
+
+                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        /**
+                         * Called when a new item is selected (in the Spinner)
+                         */
+                        @Override
+                        public void onItemSelected(AdapterView parent, View view,
+                                                   int pos, long id) {
+                            // An spinnerItem was selected. You can retrieve the selected item using
+                            // parent.getItemAtPosition(pos)
+
+                            //Variant variant = new parent.getItemAtPosition(pos);
+                            //item.variants.add(variant);
+                            //updateItem(item,0);
+
+                        }
+
+                        public void onNothingSelected(AdapterView<?> parent) {
+                            // Do nothing, just another required interface callback
+                        }
+
+                    }); // (optional
+
                 }
 
                 upperItemCategory.setText(item.carrier.category.name);
@@ -347,6 +373,28 @@ public class ActCompare extends AppCompatActivity {
 
                     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                     spinner.setAdapter(adapter);
+
+                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        /**
+                         * Called when a new item is selected (in the Spinner)
+                         */
+                        @Override
+                        public void onItemSelected(AdapterView parent, View view,
+                                                   int pos, long id) {
+                            // An spinnerItem was selected. You can retrieve the selected item using
+                            // parent.getItemAtPosition(pos)
+
+                            //Variant variant = new parent.getItemAtPosition(pos);
+                            //item.variants.add(variant);
+                            //updateItem(item,1);
+
+                        }
+
+                        public void onNothingSelected(AdapterView<?> parent) {
+                            // Do nothing, just another required interface callback
+                        }
+
+                    }); // (optional
                 }
 
                 label = (TextView) findViewById(R.id.txtLabelLower);
