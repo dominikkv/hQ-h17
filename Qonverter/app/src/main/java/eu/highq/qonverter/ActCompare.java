@@ -76,6 +76,7 @@ public class ActCompare extends AppCompatActivity {
                 if (!hasFokus) {
                     CompareItem item = items.get(0);
                     double value = Double.parseDouble(((EditText) view).getText().toString());
+
                     item.factor = value;
                     CompareItem other = getOther(0);
                     if (other != null) {
