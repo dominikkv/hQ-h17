@@ -13,8 +13,8 @@ public class Variant extends Model {
     @Column(name = "Carrier")
     public EnergyCarrier carrier;
 
-    @Column(name = "Group")
-    public Integer group;
+    @Column(name = "VariantGroup")
+    public Integer variantGroup;
 
     @Column(name = "Factor")
     public Double factor;

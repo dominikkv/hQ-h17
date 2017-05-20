@@ -49,12 +49,16 @@ public class ActCompare extends AppCompatActivity {
         upperItem.setOnClickListener(itemUpperOnClick);
         lowerItem.setOnClickListener(itemLowerOnClick);
 
+        this.items.add(null);
+        this.items.add(null);
+
         setItem(generateRandomItem(), 0);
         setItem(generateRandomItem(), 1);
     }
 
     private CompareItem generateRandomItem() {
-        return new CompareItem(new EnergyCarrier());
+        EnergyCarrier carrier = new EnergyCarrier();
+        return new CompareItem(carrier);
     }
 
     View.OnClickListener itemUpperOnClick = new View.OnClickListener() {
