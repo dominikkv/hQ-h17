@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="eu.highq.qonverter">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false" />
+
     <application
         android:name="com.activeandroid.app.Application"
         android:allowBackup="true"
@@ -9,9 +15,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="@xml/my_backup_rules">
+
         <activity
-            android:name="eu.highq.qonverter.ActCompare"
+            android:name=".ActCompare"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,8 +28,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="AA_DB_NAME" android:value="EnergyDB" />
-        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+
+        <activity
+            android:name=".ActChoose"
+            android:label="@string/title_activity_act_choose"
+            android:parentActivityName=".ActCompare"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eu.highq.qonverter.ActCompare" />
+        </activity>
+        <activity
+            android:name=".ActMeasure"
+            android:label="@string/title_activity_act_measure"
+            android:parentActivityName=".ActCompare"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="eu.highq.qonverter.ActCompare" />
+        </activity>
+
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="EnergyDB" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+
+        <provider
+            android:name="com.activeandroid.content.ContentProvider"
+            android:authorities="eu.highq.qonverter"
+            android:exported="false" />
+
     </application>
 
 </manifest>

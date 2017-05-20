@@ -5,7 +5,9 @@ import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 
-@Table(name = "tbl_EnergyCarriers")
+import java.util.List;
+
+@Table(name = "tbl_EnergyCarriers", id = "_id")
 public class EnergyCarrier extends Model {
 
     @Column(name = "Name")
@@ -20,4 +22,7 @@ public class EnergyCarrier extends Model {
     @Column(name = "Energy")
     public long energy;
 
+    public List<Variant> variants() {
+        return getMany(Variant.class, "Carrier");
+    }
 }
