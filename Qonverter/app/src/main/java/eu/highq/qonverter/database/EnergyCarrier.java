@@ -97,7 +97,7 @@ public class EnergyCarrier extends Model {
         carrier.name = "Menschliches Herz";
         carrier.category = categoryGemischt;
         carrier.energy = 5.4;
-        carrier.unit = unitGewicht;
+        carrier.unit = unitZeit;
         carrier.description = "Energiegehalt";
         carrier.save();
 
@@ -105,7 +105,7 @@ public class EnergyCarrier extends Model {
         carrier.name = "Menschliches Gehirn";
         carrier.category = categoryGemischt;
         carrier.energy = 72;
-        carrier.unit = unitGewicht;
+        carrier.unit = unitZeit;
         carrier.description = "Energiegehalt";
         carrier.save();
 
@@ -113,7 +113,7 @@ public class EnergyCarrier extends Model {
         carrier.name = "Bierkiste 1m heben.";
         carrier.category = categoryGemischt;
         carrier.energy = 0.17;
-        carrier.unit = unitGewicht;
+        carrier.unit = unitAnzahl;
         carrier.description = "Energie die notwendig ist eine Bierkiste 1mal zu heben";
         carrier.save();
 
