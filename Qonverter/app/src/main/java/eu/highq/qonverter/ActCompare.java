@@ -1,26 +1,25 @@
 package eu.highq.qonverter;
 
-import android.app.LauncherActivity;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.content.Intent;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.EditText;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.activeandroid.query.Select;
@@ -47,8 +46,8 @@ public class ActCompare extends AppCompatActivity {
     public static final int REQUEST_CODE = 1;
     public static final int REQUEST_CODE_BT = 62353;
 
-    public String lastVal1;
-    public String lastVal2;
+    public static String lastVal1;
+    public static String lastVal2;
 
 
     @Override
@@ -72,7 +71,106 @@ public class ActCompare extends AppCompatActivity {
         upperItem.setOnClickListener(itemUpperOnClick);
         lowerItem.setOnClickListener(itemLowerOnClick);
 
-        EditText value = (EditText) findViewById(R.id.edtValueUpper);
+        //Upper Item
+
+        final EditText value1 = (EditText) findViewById(R.id.edtValueUpper);
+
+        value1.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                try {
+                    CompareItem item = items.get(0);
+                    String commaReplace = value1.getText().toString();
+                    if (!commaReplace.isEmpty()) {
+                        item.factor = Double.parseDouble(commaReplace.replace(",", "."));
+                        CompareItem otherItem = getOther(0);
+                        if (otherItem != null) {
+                            updateItem(otherItem, 1);
+                        }
+                    }
+                } catch (Exception ex) {
+                    return;
+                }
+            }
+        });
+
+        value1.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFokus) {
+                if (hasFokus) {
+                    lastVal1 = value1.getText().toString();
+                    value1.setText("");
+
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(value1, InputMethodManager.SHOW_IMPLICIT);
+                }
+                else {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(value1.getWindowToken(), 0);
+                }
+            }
+        });
+
+        //Lower Item
+
+        final EditText value2 = (EditText) findViewById(R.id.edtValueLower);
+
+        /*value2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                try {
+                    CompareItem item = items.get(1);
+                    String commaReplace = value2.getText().toString();
+                    if (!commaReplace.isEmpty()) {
+                        item.factor = Double.parseDouble(commaReplace.replace(",", "."));
+                        CompareItem otherItem = getOther(1);
+                        if (otherItem != null) {
+                            updateItem(otherItem, 0);
+                        }
+                    }
+                } catch (Exception ex) {
+                    return;
+                }
+            }
+        });*/
+
+        /*value2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean hasFokus) {
+                if (hasFokus) {
+                    lastVal2 = value2.getText().toString();
+                    value2.setText("");
+
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(value2, InputMethodManager.SHOW_IMPLICIT);
+                }
+                else {
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(value2.getWindowToken(), 0);
+                }
+            }
+        });
+
         value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFokus) {
@@ -95,16 +193,16 @@ public class ActCompare extends AppCompatActivity {
                 }
             }
         });
+
         value.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
 
                 return false;
             }
-        });
+        });*/
 
-        value = (EditText) findViewById(R.id.edtValueLower);
-        value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        value2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFokus) {
                 if (!hasFokus) {

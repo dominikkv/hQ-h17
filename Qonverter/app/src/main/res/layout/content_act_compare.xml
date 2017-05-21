@@ -245,7 +245,7 @@
                         android:visibility="visible"
                         android:typeface="normal" />
 
-                </LinearLayout>
+                </LinearLayout>f
 
             </RelativeLayout>
 
