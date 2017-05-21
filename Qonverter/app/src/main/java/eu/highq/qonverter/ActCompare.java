@@ -24,7 +24,10 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.activeandroid.query.Select;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import eu.highq.qonverter.database.Category;
 import eu.highq.qonverter.database.EnergyCarrier;
@@ -42,6 +45,7 @@ public class ActCompare extends AppCompatActivity {
     public ImageView upperItemPictogram, lowerItemPictogram;
 
     public static final int REQUEST_CODE = 1;
+    public static final int REQUEST_CODE_BT = 62353;
 
     public String lastVal1;
     public String lastVal2;
@@ -56,16 +60,6 @@ public class ActCompare extends AppCompatActivity {
         //Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        //Floating Action Button (Invisible)
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         upperItem = (TextView) findViewById(R.id.txtItemUpper);
         lowerItem = (TextView) findViewById(R.id.txtItemLower);
@@ -189,12 +183,31 @@ public class ActCompare extends AppCompatActivity {
             CompareItem item = new CompareItem(result);
             setItem(item, Integer.parseInt(data.getExtras().getString("upperOrLower")));
         }
+        else if (requestCode == REQUEST_CODE_BT) {
+            if (resultCode == RESULT_OK) {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+
+                EnergyCarrier carrier = new EnergyCarrier();
+                carrier.name = "Messung " + sdf.format(new Date());
+                carrier.energy = (long) data.getDoubleExtra("energy", 1000) / 1000;
+                carrier.description = "Gemessener Wert: " + carrier.energy + " WattSekunden";
+                carrier.category = new Select().from(Category.class).where("Name = ?", "Kraftwerke").executeSingle();
+                carrier.unit = new Select().from(Unit.class).where("Name = ?", "Anzahl").executeSingle();
+                carrier.save();
+
+                CompareItem item = new CompareItem(carrier);
+                this.items.set(0, item);
+
+                displayItem(item, 0);
+                setItem(getOther(0), 1);
+            }
+        }
         else {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
         }
     }
 
-   /* @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_act_compare, menu);
@@ -208,15 +221,15 @@ public class ActCompare extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == R.id.action_add) {
-            //setContentView(R.layout.popup_addcategory);
+        if (id == R.id.action_measure) {
+            Intent intent = new Intent(this.getApplicationContext(), ActMeasure.class);
+            startActivityForResult(intent, REQUEST_CODE_BT);
             return true;
         }
 
-
         return super.onOptionsItemSelected(item);
     }
-        */
+
     private void setItem(CompareItem item, int index) {
         if ((index < 0) || (index >= this.items.size())) {
             throw new IllegalArgumentException("Index out of bounds");

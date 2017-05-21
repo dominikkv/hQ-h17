@@ -83,7 +83,7 @@ void setup() {
 
   Serial.println("Initialisiere Library");
 
-  emon.current(aStromAC, 0.9325);          // Current: input pin, calibration.
+  emon.current(aStromAC, 61.4);          // Current: input pin, calibration.
   emon.voltage(aSpannungAC, 162.24, 1.7);  // Voltage: input pin, calibration, phase_shift
 
   pinMode(dLEDToggle, OUTPUT);
