@@ -238,6 +238,7 @@ public class ActCompare extends AppCompatActivity {
         this.items.set(index, item);
 
         updateItem(item, index);
+        //displayItem(item, index);
     }
 
     private void updateItem(CompareItem item, int index) {
@@ -274,55 +275,56 @@ public class ActCompare extends AppCompatActivity {
             byte[] decodedString = Base64.decode(item.carrier.pictogram, Base64.DEFAULT);
             Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0,decodedString.length);
             Pictogram.setImageBitmap(decodedByte);
+            Pictogram.setVisibility(View.INVISIBLE);
         } else {
             Pictogram.setVisibility(View.INVISIBLE);
         }
 
 
-        List<Variant> variants = item.carrier.variants();
+        // List<Variant> variants = item.carrier.variants();
 
-        LinearLayout layout = (LinearLayout) findViewById(idSpinner);
-        layout.removeAllViews();
+        // LinearLayout layout = (LinearLayout) findViewById(idSpinner);
+        // layout.removeAllViews();
 
-        List<Integer> groups = new ArrayList<>();
+        // List<Integer> groups = new ArrayList<>();
 
-        for (Variant variant : variants) {
-            if (!groups.contains(variant.variantGroup)) {
-                groups.add(variant.variantGroup);
-            }
-        }
+        // for (Variant variant : variants) {
+        //     if (!groups.contains(variant.variantGroup)) {
+        //         groups.add(variant.variantGroup);
+        //     }
+        // }
 
-        item.variants.clear();
+        // item.variants.clear();
 
-        for (int groupID : groups) {
-            Spinner spinner = new Spinner(this);
-            layout.addView(spinner);
+        // for (int groupID : groups) {
+        //    Spinner spinner = new Spinner(this);
+        //     layout.addView(spinner);
 
-            List<String> variantNames = new ArrayList<>();
+        //    List<String> variantNames = new ArrayList<>();
 
-            for (Variant variant : variants) {
-                if (groupID == variant.variantGroup) {
-                    if (variantNames.size() == 0) {
-                        item.variants.add(variant);
-                    }
-                    variantNames.add(variant.name);
-                }
-            }
+        //     for (Variant variant : variants) {
+        //         if (groupID == variant.variantGroup) {
+        //             if (variantNames.size() == 0) {
+        //                 item.variants.add(variant);
+        //             }
+        //             variantNames.add(variant.name);
+        //         }
+        //    }
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
+        //     ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, variantNames);
 
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinner.setAdapter(adapter);
+        //     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        //     spinner.setAdapter(adapter);
 
-            final Boolean spinnerItemAlreadySelected = false;
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        //    final Boolean spinnerItemAlreadySelected = false;
+        //      spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 /**
                  * Called when a new item is selected (in the Spinner)
                  */
-                @Override
+        //        @Override
 
-                public void onItemSelected(AdapterView parent, View view,
-                                           int pos, long id) {
+        //          public void onItemSelected(AdapterView parent, View view,
+        //                                    int pos, long id) {
                     // An spinnerItem was selected. You can retrieve the selected item using
                     // parent.getItemAtPosition(pos)
 
@@ -331,15 +333,15 @@ public class ActCompare extends AppCompatActivity {
                     //item.variants.add(variant);
                     //updateItem(item, index);
 
-                }
+        //        }
 
-                public void onNothingSelected(AdapterView<?> parent) {
+        //         public void onNothingSelected(AdapterView<?> parent) {
                     // Do nothing, just another required interface callback
-                }
+        //         }
 
-            }); // (optional
+        //    }); // (optional
 
-        }
+        //}
 
         CarrierCategoryName.setText(item.carrier.category.name);
 
@@ -377,6 +379,6 @@ public class ActCompare extends AppCompatActivity {
         //Energy information
         // EnergyInfo.setText(item.carrier.name + " hat eine Energie von " + Long.toString(item.carrier.energy) + " Joule pro " + abbr.abbreviation);
         TextView EnergyInfo = (TextView) findViewById(idTxtEnergyInfo);
-        EnergyInfo.setText("Energy: " + Double.toString(item.carrier.energy) + " kJ bei einer Stunde");
+        EnergyInfo.setText("Energy: " + Double.toString(item.carrier.energy) + " kJ");
     }
 }
