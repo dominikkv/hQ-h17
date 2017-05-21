@@ -67,7 +67,7 @@ public class EnergyCarrier extends Model {
         carrier.save();
 
 
-//-----Lebensmittl
+//-----Lebensmittel
         carrier = new EnergyCarrier();
         carrier.name = "Getränke";
         carrier.pictogram = "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";
@@ -76,6 +76,153 @@ public class EnergyCarrier extends Model {
         carrier.unit = unitVolumen;
         carrier.description = "Energiegehalt verschiedener Getränke";
         carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Ei";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 6276;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Joghurt";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 2092;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Süßigkeiten";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 3347;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Knabbereien";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 14644;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Soßen";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 3766;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fisch";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 4184;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fertiggerichte";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 10041;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Brotaufstrich";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 13808;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fette";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 37657;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Obst Durchschnitt";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 2092;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Grüner Salat";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 418;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Gemüse Durchschnitt";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 837;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Oliven";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 14644;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Wurst";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 5439;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Käse";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 10460;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Fleisch";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 4184;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Kohlenhydratbeilagen";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 2929;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Brot";
+        carrier.category = categoryLebensmittel;
+        carrier.energy = 8368;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+
+
 
 //-----Kraftwerke
         carrier = new EnergyCarrier();
