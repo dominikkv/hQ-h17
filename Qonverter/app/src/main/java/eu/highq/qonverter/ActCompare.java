@@ -49,6 +49,8 @@ public class ActCompare extends AppCompatActivity {
     public static String lastVal1;
     public static String lastVal2;
 
+    private boolean datenupdate = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,29 +79,26 @@ public class ActCompare extends AppCompatActivity {
 
         value1.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
             public void afterTextChanged(Editable editable) {
-                try {
-                    CompareItem item = items.get(0);
-                    String commaReplace = value1.getText().toString();
-                    if (!commaReplace.isEmpty()) {
-                        item.factor = Double.parseDouble(commaReplace.replace(",", "."));
-                        CompareItem otherItem = getOther(0);
-                        if (otherItem != null) {
-                            updateItem(otherItem, 1);
+                if (!datenupdate) {
+                    try {
+                        CompareItem item = items.get(0);
+
+                        String commata = editable.toString();
+                        item.factor = Double.parseDouble(commata.replace(",", ".")) * item.abbr.factor;
+                        CompareItem other = getOther(0);
+                        if (other != null) {
+                            updateItem(other, 1);
                         }
+                    } catch (Exception ex) {
+                        return;
                     }
-                } catch (Exception ex) {
-                    return;
                 }
             }
         });
@@ -125,36 +124,32 @@ public class ActCompare extends AppCompatActivity {
 
         final EditText value2 = (EditText) findViewById(R.id.edtValueLower);
 
-        /*value2.addTextChangedListener(new TextWatcher() {
+        value2.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
             public void afterTextChanged(Editable editable) {
-                try {
-                    CompareItem item = items.get(1);
-                    String commaReplace = value2.getText().toString();
-                    if (!commaReplace.isEmpty()) {
-                        item.factor = Double.parseDouble(commaReplace.replace(",", "."));
-                        CompareItem otherItem = getOther(1);
-                        if (otherItem != null) {
-                            updateItem(otherItem, 0);
+                if (!datenupdate) {
+                    try {
+                        CompareItem item = items.get(1);
+                        String commata = editable.toString();
+                        item.factor = Double.parseDouble(commata.replace(",", ".")) * item.abbr.factor;
+                        CompareItem other = getOther(1);
+                        if (other != null) {
+                            updateItem(other, 0);
                         }
+                    } catch (Exception ex) {
+                        return;
                     }
-                } catch (Exception ex) {
-                    return;
                 }
             }
-        });*/
+        });
 
-        /*value2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        value2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean hasFokus) {
                 if (hasFokus) {
@@ -167,62 +162,6 @@ public class ActCompare extends AppCompatActivity {
                 else {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(value2.getWindowToken(), 0);
-                }
-            }
-        });
-
-        value.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFokus) {
-                if (!hasFokus) {
-                    CompareItem item = items.get(0);
-                    try {
-                        double value = Double.parseDouble(((EditText) view).getText().toString());
-                    } catch (Exception E) {
-                        ((EditText) view).setText(lastVal1);
-                    }
-                    String commata = ((EditText) view).getText().toString();
-                    item.factor = Double.parseDouble(commata.replace(",", ".")) * item.abbr.factor;
-                    CompareItem other = getOther(0);
-                    if (other != null) {
-                        updateItem(other, 1);
-                    }
-                } else {
-                    lastVal1 = ((EditText) view).getText().toString();
-                    ((EditText) view).setText("");
-                }
-            }
-        });
-
-        value.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-
-                return false;
-            }
-        });*/
-
-        value2.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean hasFokus) {
-                if (!hasFokus) {
-                    CompareItem item = items.get(1);
-
-                    try {
-                        double value = Double.parseDouble(((EditText) view).getText().toString());
-                    } catch (Exception E) {
-                        ((EditText) view).setText(lastVal2);
-                    }
-                    String commata = ((EditText) view).getText().toString();
-                    item.factor = Double.parseDouble(commata.replace(",", ".")) * item.abbr.factor;
-
-                    CompareItem other = getOther(1);
-                    if (other != null) {
-                        updateItem(other, 0);
-                    }
-                } else {
-                    lastVal2 = ((EditText) view).getText().toString();
-                    ((EditText) view).setText("");
                 }
             }
         });
@@ -350,18 +289,22 @@ public class ActCompare extends AppCompatActivity {
     }
 
     private void displayItem(final CompareItem item, int index) {
-
-        switch (index) {
-            case 0:
-                // hier Oberfläche 1 updaten
-                update(item, R.id.txtUpperEnergyInformation, upperItem, upperItemCategory, upperItemPictogram, R.id.txtLabelUpper, R.id.txtUnitUpper, R.id.edtValueUpper, R.id.layoutSpinnerUpper, index);
-                break;
-            case 1:
-                // hier Oberfläche 2 updaten
-                update(item, R.id.txtLowerEnergyInformation, lowerItem, lowerItemCategory, lowerItemPictogram, R.id.txtLabelLower, R.id.txtUnitLower, R.id.edtValueLower, R.id.layoutSpinnerLower, index);
-                break;
-            default:
-                throw new IllegalArgumentException("Index out of bounds");
+        datenupdate = true;
+        try {
+            switch (index) {
+                case 0:
+                    // hier Oberfläche 1 updaten
+                    update(item, R.id.txtUpperEnergyInformation, upperItem, upperItemCategory, upperItemPictogram, R.id.txtLabelUpper, R.id.txtUnitUpper, R.id.edtValueUpper, R.id.layoutSpinnerUpper, index);
+                    break;
+                case 1:
+                    // hier Oberfläche 2 updaten
+                    update(item, R.id.txtLowerEnergyInformation, lowerItem, lowerItemCategory, lowerItemPictogram, R.id.txtLabelLower, R.id.txtUnitLower, R.id.edtValueLower, R.id.layoutSpinnerLower, index);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Index out of bounds");
+            }
+        } finally {
+            datenupdate = false;
         }
     }
 
