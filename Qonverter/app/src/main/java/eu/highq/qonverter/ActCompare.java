@@ -84,7 +84,7 @@ public class ActCompare extends AppCompatActivity {
                         ((EditText) view).setText(lastVal1);
                     }
                     String commata = ((EditText) view).getText().toString();
-                    item.factor = Double.parseDouble(commata.replace(",", "."));
+                    item.factor = Double.parseDouble(commata.replace(",", ".")) * item.abbr.factor;
                     CompareItem other = getOther(0);
                     if (other != null) {
                         updateItem(other, 1);
@@ -116,7 +116,7 @@ public class ActCompare extends AppCompatActivity {
                         ((EditText) view).setText(lastVal2);
                     }
                     String commata = ((EditText) view).getText().toString();
-                    item.factor = Double.parseDouble(commata.replace(",", "."));
+                    item.factor = Double.parseDouble(commata.replace(",", ".")) * item.abbr.factor;
 
                     CompareItem other = getOther(1);
                     if (other != null) {
@@ -374,6 +374,7 @@ public class ActCompare extends AppCompatActivity {
         unit.setText(abbr.abbreviation);
 
         EditText value = (EditText) findViewById(idEdtValue);
+        item.abbr = abbr;
         value.setText(String.format("%.2f", (item.factor / abbr.factor)));
 
         //Energy information
