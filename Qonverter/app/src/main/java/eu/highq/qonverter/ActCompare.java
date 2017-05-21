@@ -377,6 +377,6 @@ public class ActCompare extends AppCompatActivity {
         //Energy information
         // EnergyInfo.setText(item.carrier.name + " hat eine Energie von " + Long.toString(item.carrier.energy) + " Joule pro " + abbr.abbreviation);
         TextView EnergyInfo = (TextView) findViewById(idTxtEnergyInfo);
-        EnergyInfo.setText("Energy: " + Long.toString(item.carrier.energy) + " kJ bei einer Stunde");
+        EnergyInfo.setText("Energy: " + Double.toString(item.carrier.energy) + " kJ bei einer Stunde");
     }
 }

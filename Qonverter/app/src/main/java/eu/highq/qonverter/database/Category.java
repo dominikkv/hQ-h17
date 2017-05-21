@@ -41,5 +41,10 @@ public class Category extends Model {
         category.name = "Haushaltsgeräte";
         category.save();
 
+        category = new Category();
+        category.name = "Gemischt";
+        category.save();
+
+
     }
 }

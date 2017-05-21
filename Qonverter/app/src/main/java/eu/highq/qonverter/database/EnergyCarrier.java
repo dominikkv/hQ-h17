@@ -31,7 +31,7 @@ public class EnergyCarrier extends Model {
     public Unit unit;
 
     @Column(name = "Energy")
-    public long energy;
+    public double energy;
 
     @Column(name = "Description")
     public String description;
@@ -56,6 +56,7 @@ public class EnergyCarrier extends Model {
         Category categoryBewegung = new Select().from(Category.class).where("Name = ?", "Bewegung").executeSingle();
         Category categoryBrennstoffe = new Select().from(Category.class).where("Name = ?", "Brennstoffe").executeSingle();
         Category categoryHaushaltsgeraete = new Select().from(Category.class).where("Name = ?", "Haushaltsgeräte").executeSingle();
+        Category categoryGemischt = new Select().from(Category.class).where("Name = ?", "Gemischt").executeSingle();
 
         EnergyCarrier carrier = new EnergyCarrier();
         carrier.pictogram ="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";
@@ -66,6 +67,39 @@ public class EnergyCarrier extends Model {
         carrier.description = "Wie weit kommt man mit dem Auto, Liter";
         carrier.save();
 
+
+// -----Gemischt
+        carrier = new EnergyCarrier();
+        carrier.name = "Triebwerk Saturn1-Rakete";
+        carrier.category = categoryGemischt;
+        carrier.energy = 155396000000l;
+        carrier.unit = unitZeit;
+        carrier.description = "Energiegehalt verschiedener Getränke";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Menschliches Herz";
+        carrier.category = categoryGemischt;
+        carrier.energy = 5.4;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Menschliches Gehirn";
+        carrier.category = categoryGemischt;
+        carrier.energy = 72;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energiegehalt";
+        carrier.save();
+
+        carrier = new EnergyCarrier();
+        carrier.name = "Bierkiste 1m heben.";
+        carrier.category = categoryGemischt;
+        carrier.energy = 0.17;
+        carrier.unit = unitGewicht;
+        carrier.description = "Energie die notwendig ist eine Bierkiste 1mal zu heben";
+        carrier.save();
 
 //-----Lebensmittel
         carrier = new EnergyCarrier();

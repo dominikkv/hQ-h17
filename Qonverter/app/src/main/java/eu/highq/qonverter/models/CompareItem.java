@@ -18,20 +18,20 @@ public class CompareItem {
     }
 
     public Long calculateEnergy() {
-        long energy = carrier.energy;
+        Double energy = carrier.energy;
 
         for (Variant variant : this.variants) {
-            energy = (long) (energy * variant.factor);
+            energy = (Double) (energy * variant.factor);
         }
 
         return (long) (energy * this.factor);
     }
 
     public void adjustFactor(Long energy) {
-        long ownEnergy = carrier.energy;
+        Double ownEnergy = carrier.energy;
 
         for (Variant variant : this.variants) {
-            ownEnergy = (long) (ownEnergy * variant.factor);
+            ownEnergy = (Double) (ownEnergy * variant.factor);
         }
 
         this.factor = energy.doubleValue() / ownEnergy;
