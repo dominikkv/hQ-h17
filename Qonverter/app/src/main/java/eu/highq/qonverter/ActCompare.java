@@ -14,11 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,6 +64,23 @@ public class ActCompare extends AppCompatActivity {
         lowerItemCategory = (TextView) findViewById(R.id.txtItemLowerCategory);
         upperItemPictogram = (ImageView) findViewById(R.id.imageUpper);
         lowerItemPictogram = (ImageView) findViewById(R.id.imageBelow);
+
+        //Gesture listener
+        View view = findViewById(R.id.rootLayout);
+        view.setOnTouchListener(new OnSwipeTouchListener(ActCompare.this) {
+            public void onSwipeTop() {
+                Shuffle();
+            }
+            public void onSwipeRight() {
+                Shuffle();
+            }
+            public void onSwipeLeft() {
+                Shuffle();
+            }
+            public void onSwipeBottom() {
+                Shuffle();
+            }
+        });
 
         //OnClickListener for Items
         upperItem.setOnClickListener(itemUpperOnClick);
@@ -177,6 +190,10 @@ public class ActCompare extends AppCompatActivity {
             Variant.prePopulate();
         }
 
+        Shuffle();
+    }
+
+    private void Shuffle() {
         CompareItem firstItem = generateRandomItem();
         CompareItem secondItem;
 
