@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.content.Intent;
@@ -14,11 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -49,7 +46,6 @@ public class ActCompare extends AppCompatActivity {
     public static String lastVal1;
     public static String lastVal2;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Main Activity
@@ -66,6 +62,23 @@ public class ActCompare extends AppCompatActivity {
         lowerItemCategory = (TextView) findViewById(R.id.txtItemLowerCategory);
         upperItemPictogram = (ImageView) findViewById(R.id.imageUpper);
         lowerItemPictogram = (ImageView) findViewById(R.id.imageBelow);
+
+        //Gesture listener
+        View view = findViewById(R.id.rootLayout);
+        view.setOnTouchListener(new OnSwipeTouchListener(ActCompare.this) {
+            public void onSwipeTop() {
+                Shuffle();
+            }
+            public void onSwipeRight() {
+                Shuffle();
+            }
+            public void onSwipeLeft() {
+                Shuffle();
+            }
+            public void onSwipeBottom() {
+                Shuffle();
+            }
+        });
 
         //OnClickListener for Items
         upperItem.setOnClickListener(itemUpperOnClick);
@@ -238,6 +251,10 @@ public class ActCompare extends AppCompatActivity {
             Variant.prePopulate();
         }
 
+        Shuffle();
+    }
+
+    private void Shuffle() {
         CompareItem firstItem = generateRandomItem();
         CompareItem secondItem;
 
